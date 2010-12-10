@@ -8,12 +8,9 @@ describe Voter do
 
   before(:each) do
     @valid_attributes = {
-      :body => "value for body",
-      :race_id => @race.id,
-      :source_id => 0,
-      :created_at => Time.now,
-      :updated_at => Time.now,
-      :candidate_id => -1
+      :screen_name => "oliverjesse",
+      :name => "Jesse Sanford",
+      :twitter_id => 12345
     }
   end
 

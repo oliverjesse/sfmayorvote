@@ -1,13 +1,26 @@
 require 'spec_helper'
 
+def setup_poll
+  @chain = Chain.new(
+    :anchor => "#vote #nosepiercings"
+  )
+  @chain.choices << Choice.new(
+    :term => "#awesome"
+  )
+  @chain.choices << Choice.new(
+    :term => "#ugly"
+  )
+  @chain.save
+end
+
 describe Tweet do
   before(:all) do
     @valid_attributes = {
-      :text => "omg we all gotta #vote @MattGonzalez #mayor"
+      :text => "omg we all gotta #vote #awesome for #nosepiercings !!!"
     }
     
     @invalid_attributes = {
-      :text => "who would want to #vote for #sfmayor on twitter anyway???" # has chain but no choice
+      :text => "who would want to #vote for #nosepiercings on twitter anyway???" # has chain but no choice
     }
   end
   
@@ -17,7 +30,7 @@ describe Tweet do
     end
     
     it "should be invalid" do
-      lambda { @tweet.save }.should raise_error(ActiveRecord::RecordInvalid)
+      @tweet.save.should be_false
     end
     
     it "should not get a chain or a choice" do
@@ -27,6 +40,10 @@ describe Tweet do
   end
   
   describe "with non-blank text" do
+    before(:all) do
+      setup_poll
+    end
+
     before(:each) do
       @tweet = Tweet.new(@valid_attributes)
     end
@@ -35,6 +52,7 @@ describe Tweet do
       it "should have terms found in tweet text" do
         @tweet.chain.terms.each do |term|
           @tweet.text.should =~ /#{term}/
+        end
       end
     end
 
@@ -49,17 +67,21 @@ describe Tweet do
 
       it "should be from the same chain" do
         @tweet.choice.chain_id.should_not be_nil
-        @tweet.chain_id.should_not be_nil
-        @tweet.choice.chain_id.should == @tweet.chain_id
+        @tweet.chain.should_not be_nil
+        @tweet.choice.chain_id.should == @tweet.chain.id
       end
     end
   end
   
-  pending "should only get assigned a chain and a choice on initialization if necessary" do
+  it "should only get assigned a chain and a choice on initialization if necessary" do
     
   end
   
   describe "scoring" do
+    before(:all) do
+      setup_poll
+    end
+    
     describe "for valid tweet" do
       before(:each) do
         @tweet = Tweet.new(@valid_attributes)
@@ -88,12 +110,12 @@ describe Tweet do
       end
 
       it "should calculate new percentages for all choices" do
-        choices = @tweet.chain.choices
-        choices.map(&:percent).sum.should == 100
+        all_choices = @tweet.chain.choices
+        [0,1].include?(all_choices.map(&:percent).sum).should be_true
         old_percent = @tweet.choice.percent
         @tweet.save
-        @tweet.choice.percent.should > old_percent
-        choices.map(&:percent).sum.should == 100
+        @tweet.choice.reload.percent.should > old_percent
+        all_choices.map(&:percent).sum.should == 1
       end
     end
     
@@ -104,6 +126,4 @@ describe Tweet do
       end
     end
   end
-
-  
 end

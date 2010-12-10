@@ -9,21 +9,23 @@ class Chain < ActiveRecord::Base
   attr_accessor :words
 
   def update_results
-    calculate_percentage
-    # calculate_rank
-    save
+    update_percentages
   end
   
-  def calculate_percentage
+  def update_percentages
     if number > 0
-      choices.each do |c|
-        c.update_attribute(:percent, (c.number / number))
+      choices.reload.each do |c|
+        c.update_attribute(:percent, c.calculate_percentage)
       end
     end
   end
   
   def upvote
     update_attribute(:number, number + 1)
+  end
+  
+  def terms
+    anchor.split
   end
 
   class << self

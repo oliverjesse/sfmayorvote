@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101210015315) do
+ActiveRecord::Schema.define(:version => 20101210193505) do
 
   create_table "chains", :force => true do |t|
     t.string   "anchor"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20101210015315) do
     t.string   "term"
     t.integer  "number",          :default => 0
     t.integer  "rank"
-    t.float    "percent"
+    t.float    "percent",         :default => 0.0
     t.integer  "markov_chain_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20101210015315) do
     t.integer  "chain_id"
     t.integer  "voter_id"
     t.integer  "choice_id"
+    t.boolean  "scored",     :default => false
   end
 
   create_table "voters", :force => true do |t|
