@@ -13,10 +13,22 @@ def setup_poll
   @chain.save
 end
 
+
 describe Tweet do
   before(:all) do
+    @voter = (Voter.where(:screen_name => "nk").first || Voter.create!(
+      :screen_name => "nk",
+      :twitter_id => 777
+    ))
+    
     @valid_attributes = {
-      :text => "omg we all gotta #vote #awesome for #nosepiercings !!!"
+      :text => "omg we all gotta #vote #awesome for #nosepiercings !!!",
+      :voter => @voter
+    }
+    
+    @alternate_attributes = {
+      :text => "omg #nosepiercings are soooooo #ugly #vote",
+      :voter => @voter
     }
     
     @invalid_attributes = {
@@ -46,6 +58,13 @@ describe Tweet do
 
     before(:each) do
       @tweet = Tweet.new(@valid_attributes)
+    end
+    
+    it "should have a voter, chain and choice id after saving if valid" do
+      @tweet.save
+      @tweet.choice_id.should_not be_nil
+      @tweet.chain_id.should_not be_nil
+      @tweet.voter_id.should_not be_nil
     end
     
     describe "chain" do
@@ -116,6 +135,25 @@ describe Tweet do
         @tweet.save
         @tweet.choice.reload.percent.should > old_percent
         all_choices.map(&:percent).sum.should == 1
+      end
+      
+      describe "for different replacement vote" do
+        before(:each) do
+          @prior_tweet = Tweet.create!(@valid_attributes)
+          @current_tweet = Tweet.new(@alternate_attributes)
+        end
+        
+        it "should retract the prior vote" do
+          old_count = @prior_tweet.choice.number
+          @current_tweet.save
+          @prior_tweet.reload.choice.number.should == (old_count - 1)
+        end
+        
+        it "should record the appropriate choice" do
+          old_count = @current_tweet.choice.number
+          @current_tweet.save
+          @current_tweet.reload.choice.number.should == (old_count + 1)
+        end
       end
     end
     

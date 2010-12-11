@@ -14,20 +14,31 @@ describe Voter do
     }
   end
 
-  it "should create a new instance given valid attributes" do
-    Voter.create!(@valid_attributes)
-  end
-  
-  it "should have many tweets" do
+  describe "given valid attributes" do
+    before(:each) do
+      @voter = Voter.new(@valid_attributes)
+    end
     
-  end
-  
-  it "should always have at least one tweet" do
-    
-  end
-  
-  it "should have a unique screen name and twitter id" do
-    
-  end
+    it "should save without error" do
+      @voter.save.should_not be_false
+    end
 
+    it "should have many tweets" do
+      @voter.should respond_to(:tweets)
+    end    
+    
+    it "should always have at least one tweet" do
+      # hard to test ...
+    end
+  end
+    
+  describe "with duplicate screen name or twitter id" do
+    it "should be invalid" do
+      Voter.create!(@valid_attributes)
+      old_count = Voter.count
+      @voter2 = Voter.new(@valid_attributes)
+      @voter2.save.should be_false
+      old_count.should == Voter.count
+    end
+  end
 end
