@@ -13,6 +13,7 @@ end
 g = Growl.new 'localhost', 'growltweet', ['tweet'], ['tweet'], 'Owlgray'
 
 Twitter.filter_stream(USERNAME, PASSWORD, { :keywords => tracks }) do |status|
+  puts "Waking up to smell the Tweets: #{status[:text]}\n"
   v = Voter.find_or_initialize_by_screen_name(status[:user][:screen_name])
   v.twitter_id = status[:user][:id]
   v.name = status[:user][:name]

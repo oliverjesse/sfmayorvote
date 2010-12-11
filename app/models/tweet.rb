@@ -41,7 +41,7 @@ class Tweet < ActiveRecord::Base
   end
   
   def prior_tweet
-    @prior_tweet ||= Tweet.where(:voter_id => voter.id, :chain_id => chain.id).where("choice_id is not null").first
+    @prior_tweet ||= Tweet.where(:voter_id => voter.id, :chain_id => chain.id).where("choice_id is not null").order("created_at desc").first
   end
   
   # does not currently update results
@@ -66,7 +66,6 @@ class Tweet < ActiveRecord::Base
   end
   
   def record_score
-    # puts "Attempting Scoring Niceness..."
     choice.upvote # should we check to see if they've voted before?
     chain.upvote
     chain.update_results
