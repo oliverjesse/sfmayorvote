@@ -37,6 +37,13 @@ describe Choice do
       @tweet.choice.should be_present
       old_choice.id.should == @tweet.choice.id
     end
+    
+    it "should contain at least one word from term that matches tweet text" do
+      Choice.where(:term => "@foo").first.update_attribute(:term, "@foo fue foo")
+      @tweet = Tweet.new(:text => "I'd like to #make #contact with @foo")
+      @tweet.choice.should be_present
+      @tweet.choice.id.should == @choice.id
+    end
   end
   
 end

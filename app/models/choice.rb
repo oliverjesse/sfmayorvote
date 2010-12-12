@@ -12,9 +12,22 @@ class Choice < ActiveRecord::Base
   end
   
   class << self
+    # def for_tweet(tweet)
+    #   Choice.all.each do |c|
+    #     return c if tweet.text =~ /#{c.term}/i
+    #   end
+    #   nil
+    # end
+    
+    # must have ANY words from term in any order
     def for_tweet(tweet)
       Choice.all.each do |c|
-        return c if tweet.text =~ /#{c.term}/i
+        words = c.term.split
+        found = false
+        words.each do |w|
+          found = (found || (tweet.text =~ /#{w}/i))
+        end
+        return c if found
       end
       nil
     end
