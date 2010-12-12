@@ -35,7 +35,7 @@ class Chain < ActiveRecord::Base
         words = c.term.split
         found = true
         words.each do |w|
-          found = (found && (tweet.text =~ /#{w}/))
+          found = (found && (tweet.text =~ /#{w}/i))
         end
         return c if found
       end

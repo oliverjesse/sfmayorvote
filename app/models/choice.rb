@@ -14,7 +14,7 @@ class Choice < ActiveRecord::Base
   class << self
     def for_tweet(tweet)
       Choice.all.each do |c|
-        return c if tweet.text =~ /#{c.term}/
+        return c if tweet.text =~ /#{c.term}/i
       end
       nil
     end
