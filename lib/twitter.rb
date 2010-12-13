@@ -11,6 +11,7 @@ class Twitter
     params << "track=#{[*filters[:keywords]].join(",")}" if filters[:keywords]
     params << "locations=#{[*filters[:locations]].join(",")}" if filters[:locations]
     consecutive_errors = 0
+    Rails.logger.info "Listening to stream: #{url}, #{params}"
     while consecutive_errors < MAX_ALLOWED_ERRORS  do
       begin
         Yajl::HttpStream.post(url, params.join("&"), :symbolize_keys => true) do |status|
@@ -18,6 +19,7 @@ class Twitter
           yield(status)
         end
       rescue Yajl::HttpStream::InvalidContentType
+        Rails.logger.info "Stream Listener hit an error! [#{consecutive_errors}]\n"
         consecutive_errors += 1
       end
       sleep(0.25*consecutive_errors)
