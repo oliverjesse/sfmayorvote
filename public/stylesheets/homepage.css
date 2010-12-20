@@ -64,6 +64,7 @@ body {
 {
 	margin-top:4px;
 	margin-left:1px;
+	height: 24px;
 }
 
 .poli-container .twitter-profiles li
@@ -71,6 +72,16 @@ body {
 	margin:0px;
 	padding-right:1px;
   display:inline;
+}
+
+.twitter-profiles img {
+	height: 24px;
+	width: 24px;
+}
+
+img.small {
+	height: 24px;
+	width: 24px;
 }
 
 .poli-container .profile-image img {
@@ -234,6 +245,7 @@ fieldset.search {
 	box-shadow: 0px 2px 0px #efe9d0;
 	padding: 6px;
 	margin-bottom: 30px;
+	display: none;
 }
 
 .search input, .search button {
@@ -252,6 +264,23 @@ fieldset.search {
 	-webkit-border-radius:4px 0px 0px 4px;
 	background-image: url('../images/shadow.png');
 	background-position: top left;
+}
+
+#tweet-box {
+	color: #000000;
+	font-size: 22px;
+	padding-left: 14px;
+	height: 49px;
+	width: 846px;
+	border: 1px solid #cccccc;
+	-moz-border-radius:4px 0px 0px 4px;
+	-webkit-border-radius:4px 0px 0px 4px;
+	background-image: url('../images/shadow.png');
+	background-position: top left;
+}
+
+#tbox {
+	margin-bottom: 30px;
 }
 
 

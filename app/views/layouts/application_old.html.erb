@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Markov</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <script src="http://platform.twitter.com/anywhere.js?id=1ok9xZ7rPD8xzvH48NRAjg&amp;v=1">
+  </script>
+  <script type="text/javascript">
+     twttr.anywhere(function(twitter) {
+              twitter.hovercards();
+     });
+  </script>
+</head>
+<body>
+  <p>
+    On January 4, 2010, current San Francisco mayor Gavin Newsom becomes California Lieutenant Governor.  The Board of Supervisors gets to choose the next San Francisco mayor, and YOU DON'T GET TO VOTE.  Until now.
+  </p>
+  <div id="tbox"></div>
+  <script type="text/javascript">
+
+    twttr.anywhere(function (T) {
+
+      T("#tbox").tweetBox({
+        height: 100,
+        width: 400,
+        defaultContent: "Hey Supervisors! I'd cast my #sfmayor #vote for ",
+        label: "How would you vote for the next SF Mayor?"
+      });
+
+    });
+
+  </script>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+%div{:class => "grid_3 alpha"}
+  %div{:class => "poli-container"}
+    %div{:class => "eyebrow-container"}
+      %span{:class => "global-sprites eyebrow"}
+        = rank(choice_counter)
+    %div{:class => "profile-image"}
+      %img{:src => choice.image_url }
+    %ul
+      %li{:class => "candidate-name"}
+        = choice.name
+      %li{:class => "percentage"}
+        = "#{(choice.percent * 100).to_i}%"
+      %li{:class => "global-sprites line"}
+      %li{:class => "supporters"}
+        = "#{choice.number} supporters"
+    %ul{:class => "twitter-profiles"}
+      =render :partial => "voters/small_icon", :collection => choice.voters
+
+    %div{:class => "vote-button-container"}
+      %a{:href => "#"}
+        %span{:class => "global-sprites vote-button"}
+          = "vote for #{ choice.handle }"
