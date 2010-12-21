@@ -1,0 +1,85 @@
+
+/* TWITTER BAR */
+#editor {
+	width: 924px;
+	border: none;
+	background: #fff;
+	border: 1px solid #cccccc;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-box-shadow: 0px 2px 0px #efe9d0;
+	-webkit-box-shadow: 0px 2px 0px #efe9d0;
+	box-shadow: 0px 2px 0px #efe9d0;
+	padding: 6px;
+	margin-bottom: 30px;
+	margin-left: 2px;
+	margin-right: 3px;
+}
+
+input, button {
+	border: none;
+	float: left;
+}
+
+#tweet-box {
+	color: #000000;
+	font-size: 22px;
+	padding: 0;
+	padding-left: 14px;
+	height: 49px;
+	width: 846px;
+	border: 1px solid #cccccc;
+	-moz-border-radius:4px 0px 0px 4px;
+	-webkit-border-radius:4px 0px 0px 4px;
+	background-image: url('http://localhost:3000/images/shadow.png');
+	background-position: top left;
+}
+
+#tweet-box {
+	width: 846px !important;
+	height: 49px !important;
+}
+
+#counter {
+	position: absolute;
+	left: 20px;
+	top: 25px;
+}
+
+.btn,.btm-m {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background: none;
+}
+
+#tweeting-button {
+	
+	background:url("http://localhost:3000/images/sprites.png") no-repeat scroll 0 0 transparent;
+	display:inline-block;
+	overflow:hidden;
+	padding:0;
+	position:relative;
+	vertical-align:middle;
+
+	background-position: -1px -150px;
+	height: 53px;
+	width: 61px;
+	padding: 0;
+	margin: 0;
+	top: -92px;
+	left: -10px;
+	color: transparent;
+	text-shadow: none;
+}
+	
+#tweeting-button:hover {
+	background-position: -63px -150px;
+	height: 53px;
+	width: 61px;
+}
+
+#tweeting-button > * {
+	display: none;
+}
+
