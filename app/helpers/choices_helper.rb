@@ -9,4 +9,9 @@ module ChoicesHelper
     choice_counter + 1
   end
   
+  def alpha(c)
+    return "alpha" if (c % 4 == 0)
+    ""
+  end
+  
 end

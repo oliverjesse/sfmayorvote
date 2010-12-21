@@ -47,6 +47,10 @@ class Choice < ActiveRecord::Base
       nil
     end
     
+    def for_chain(chain)
+      Choice.where(:chain_id => chain.id).order("number desc")
+    end
+    
   end
   
 end

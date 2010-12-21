@@ -1,5 +1,5 @@
 <div class="container_12">
-  <%= render :partial => "choices/show", :collection => @chain.choices.order("number desc").limit(8), :as => :choice -%>
+  <%= render :partial => "choices/show", :collection => @choices[0..7], :as => :choice -%>
 </div>
 
 <div class="container_12">
@@ -10,5 +10,5 @@
 	</div>
 </div>	
 
-<%= render :partial => "choices/show_brief", :collection => @chain.choices.order("number asc").limit(@chain.choices.count - 8).reverse, :as => :choice -%>
+<%= render :partial => "choices/show_brief", :collection => @choices[8..@choices.size], :as => :choice -%>
 
