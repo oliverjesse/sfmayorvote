@@ -1,5 +1,10 @@
 
 /* TWITTER BAR */
+#tweet-box-container {
+	overflow: hidden;
+	height: 80px;
+}
+
 #editor {
 	width: 924px;
 	border: none;
@@ -14,6 +19,7 @@
 	margin-bottom: 30px;
 	margin-left: 2px;
 	margin-right: 3px;
+	padding-bottom: 3px;
 }
 
 input, button {
@@ -25,25 +31,28 @@ input, button {
 	color: #000000;
 	font-size: 22px;
 	padding: 0;
-	padding-left: 14px;
-	height: 49px;
-	width: 846px;
+	padding-top: 12px;
+	padding-left: 60px;
+	height: 30px;
+	width: 806px;
 	border: 1px solid #cccccc;
 	-moz-border-radius:4px 0px 0px 4px;
 	-webkit-border-radius:4px 0px 0px 4px;
 	background-image: url('http://localhost:3000/images/shadow.png');
 	background-position: top left;
+	resize: none;
+	overflow: none;
 }
 
 #tweet-box {
-	width: 846px !important;
-	height: 49px !important;
+	width: 800px !important;
+	height: 39px !important;
 }
 
 #counter {
 	position: absolute;
 	left: 20px;
-	top: 25px;
+	top: 26px;
 }
 
 .btn,.btm-m {
@@ -67,8 +76,8 @@ input, button {
 	width: 61px;
 	padding: 0;
 	margin: 0;
-	top: -92px;
-	left: -10px;
+	top: -91px;
+	left: -11px;
 	color: transparent;
 	text-shadow: none;
 }

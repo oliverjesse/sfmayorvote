@@ -245,6 +245,7 @@ fieldset.search {
 	box-shadow: 0px 2px 0px #efe9d0;
 	padding: 6px;
 	margin-bottom: 30px;
+	display: none;
 }
 
 .search input, .search button {
