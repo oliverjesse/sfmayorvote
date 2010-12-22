@@ -7,10 +7,6 @@ class Chain < ActiveRecord::Base
 
   attr_accessor :words
 
-  def update_results
-    update_percentages
-  end
-  
   def update_percentages
     if number > 0
       choices.reload.each do |c|
