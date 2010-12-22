@@ -48,7 +48,7 @@ class Choice < ActiveRecord::Base
     end
     
     def for_chain(chain)
-      Choice.where(:chain_id => chain.id).order("number desc")
+      chain.choices.order("number desc")
     end
     
   end

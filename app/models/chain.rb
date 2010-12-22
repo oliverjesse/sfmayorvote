@@ -50,7 +50,7 @@ class Chain < ActiveRecord::Base
       _choice_term = termpair.split.last
       _chain = where(:anchor => _anchor).first
       # puts "Found a chain with id #{_chain.id}."
-      _choice = Choice.where(:chain_id => _chain.id).where(:term => _choice_term).first
+      _choice = _chain.choices.where(:term => _choice_term).first
       # puts "Found an choice with id #{_choice.id}"
       _chain.update_attribute(:number, (_chain.number || 0) + 1)
       _choice.number = (_choice.number || 0) + 1
