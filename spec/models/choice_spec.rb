@@ -42,7 +42,7 @@ describe Choice do
       Choice.where(:term => "@foo").first.update_attribute(:term, "@foo fue foo")
       @tweet = Tweet.new(:text => "I'd like to #make #contact with @foo")
       @tweet.choice.should be_present
-      @tweet.choice.id.should == @choice.id
+      @tweet.choice.should == @choice
     end
   end
   

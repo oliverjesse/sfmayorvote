@@ -24,12 +24,7 @@ class Choice < ActiveRecord::Base
     # must have ANY words from term in any order
     def for_tweet(tweet)
       Choice.find_each do |c|
-        words = c.term.split
-        found = false
-        words.each do |w|
-          found = (found || (tweet.text =~ /#{w}/i))
-        end
-        return c if found
+        return c if c.term.split.any? {|word| tweet.text =~ /#{word}/i }
       end
       nil
     end
