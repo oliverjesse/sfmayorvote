@@ -20,8 +20,12 @@ class Tweet < ActiveRecord::Base
     self.voter ||= Voter.new
   end
 
+  def related_tweets
+    voter.tweets.where(:chain_id => chain.id).where("choice_id is not null")
+  end
+
   def prior_tweet
-    @prior_tweet ||= Tweet.where(:voter_id => voter.id, :chain_id => chain.id).where("choice_id is not null").order("created_at desc").first
+    @prior_tweet ||= related_tweets.order("created_at desc").first
   end
   
   # does not currently update results
