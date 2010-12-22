@@ -266,8 +266,8 @@ fieldset.search {
 	background-position: top left;
 }
 
-#tbox_frame {
-	z-index: 500;
+.tbox_frame {
+	height: 100px;
 }
 
 #tbox {
