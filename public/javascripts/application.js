@@ -35,5 +35,5 @@ var	buttonHandler = function(e){
 $(document).ready(function(){
 	$(".vote-button").live("click", buttonHandler);
 	$(".small-vote-button").live("click", buttonHandler);
-	// $(".tbox_frame").stickyScroll({ container: $('#container') });
+	$("#tbox").stickyScroll({ mode: 'manual' });
 });
