@@ -2,10 +2,9 @@ class Chain < ActiveRecord::Base
   has_many :choices, :dependent => :destroy
   has_many :tweets
   before_save :update_choices
-  
-  validates_presence_of :anchor
-  validates_uniqueness_of :anchor
-  
+
+  validates :anchor, :presence => true, :uniqueness => true
+
   attr_accessor :words
 
   def update_results
