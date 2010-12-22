@@ -5,27 +5,15 @@ class Tweet < ActiveRecord::Base
 
   before_create :process
   after_initialize :set_defaults
-  
+
   validates :text, :presence => true
 
   def process
     score 
   end
 
-  # def voter
-  #   self[:voter] ||= Voter.new
-  # end
-  
-  # def chain
-  #   self[:chain] ||= identify_chain
-  # end
-  # 
-  # def choice
-  #   self[:choice] ||= identify_choice
-  # end
-  
   protected
-  
+
   def set_defaults
     self.chain ||= identify_chain
     self.choice ||= identify_choice

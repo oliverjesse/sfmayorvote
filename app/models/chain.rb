@@ -51,14 +51,6 @@ class Chain < ActiveRecord::Base
     end
   end
   
-  # def terms
-  #   [].tap do |a|
-  #     choices.map(&:term).each do |t|
-  #       a << "#{anchor} #{t}"
-  #     end
-  #   end
-  # end
-  
   def term
     anchor
   end
