@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe Choice do
   before(:each) do
-    @chain = Chain.new(:anchor => "#make #contact")
-    @chain.choices = [ Choice.new(:term => "@foo"), Choice.new(:term => "@bar") ]
-    @chain.save
+    @choice = Choice.new(:term => "@foo")
+    @chain = Chain.create!(
+      :anchor => "#make #contact",
+      :choices => [ @choice, Choice.new(:term => "@bar") ])
   end
   
   it "should belong to a chain" do
-    
+    @choice.chain.should be_present
   end
   
   it "should have many tweets" do
