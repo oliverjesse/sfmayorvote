@@ -1,5 +1,9 @@
 module ChoicesHelper
   
+  def pretty_percent(c)
+    (c * 100).to_i.to_s + "%"
+  end
+  
   def pretty_link(link)
     return "" unless link.present?
     link_to(" [more info] ",link)

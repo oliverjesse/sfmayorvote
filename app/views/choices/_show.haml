@@ -1,7 +1,7 @@
 %div{:class => "grid_3 #{alpha(choice_counter)}"}
   %div{:class => "poli-container"}
     %div{:class => "eyebrow-container"}
-      %span{:class => "global-sprites eyebrow"}
+      %span{:class => "global-sprites eyebrow #{((choice_counter == 0) ? '' : 'gray')}"}
         = rank(choice_counter)
     %div{:class => "profile-image"}
       %img{:src => choice.image_url }
@@ -9,7 +9,7 @@
       %li{:class => "candidate-name"}
         = choice.name
       %li{:class => "percentage"}
-        = "#{(choice.percent * 100).to_i}%"
+        = "#{pretty_percent(choice.percent)}"
       %li{:class => "global-sprites line"}
       %li{:class => "supporters"}
         = "#{choice.number} supporters"

@@ -31,7 +31,7 @@ gem "em-http-request"
 # gem 'postgres-pr'
 # gem 'em_postgresql'
 gem 'pg'
-
+gem 'jquery-rails', '>= 0.2.6'
 
 
 # Bundle gems for the local environment. Make sure to
