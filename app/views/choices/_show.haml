@@ -18,5 +18,5 @@
 
     %div{:class => "vote-button-container"}
       %a{:href => "#"}
-        %span{:class => "global-sprites vote-button"}
+        %span{:class => "global-sprites vote-button", :data => { :tag => "#{choice.handle}" }}
           = "vote for #{ choice.handle }"

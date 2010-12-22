@@ -266,9 +266,15 @@ fieldset.search {
 	background-position: top left;
 }
 
+#tbox_frame {
+	z-index: 500;
+}
+
 #tbox {
 	margin-bottom: 20px;
+	z-index: 500;
 }
+
 
 .search button.btn {
 	background-position: -1px -150px;
@@ -288,4 +294,8 @@ fieldset.search {
 #logo {
 	text-align:center;
 	margin-top: 50px;
+}
+
+p.clearfix {
+	clear: both;
 }
