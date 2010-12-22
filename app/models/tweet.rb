@@ -66,8 +66,8 @@ class Tweet < ActiveRecord::Base
   end
   
   def record_score
-    choice.upvote # should we check to see if they've voted before?
-    chain.upvote
+    choice.increment!(:number) # should we check to see if they've voted before?
+    chain.increment!(:number)
     chain.update_results
   end
 end

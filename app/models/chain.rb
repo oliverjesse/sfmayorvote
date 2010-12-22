@@ -18,11 +18,7 @@ class Chain < ActiveRecord::Base
       end
     end
   end
-  
-  def upvote
-    update_attribute(:number, number + 1)
-  end
-  
+
   def terms
     anchor.split
   end
@@ -52,8 +48,8 @@ class Chain < ActiveRecord::Base
       # puts "Found a chain with id #{_chain.id}."
       _choice = _chain.choices.where(:term => _choice_term).first
       # puts "Found an choice with id #{_choice.id}"
-      _chain.update_attribute(:number, (_chain.number || 0) + 1)
-      _choice.number = (_choice.number || 0) + 1
+      _chain.increment!(:number)
+      _choice.increment(:number)
       _choice.percent = (_choice.number / _chain.number * 100)
       _choice.save
     end

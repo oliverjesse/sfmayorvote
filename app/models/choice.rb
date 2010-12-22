@@ -14,11 +14,7 @@ class Choice < ActiveRecord::Base
   def image_url
     "/images/politician-" + name.split.last.downcase + ".jpg"
   end
-  
-  def upvote
-    update_attribute(:number, number + 1)
-  end
-  
+
   def calculate_percentage
     return 0 unless (self.chain.number > 0)
     (number / self.chain.number.to_f).round(2)
