@@ -10,10 +10,6 @@ class Choice < ActiveRecord::Base
   def handle
     term.split.first
   end
-  
-  def image_url
-    "/images/politician-" + name.split.last.downcase + ".jpg"
-  end
 
   def calculate_percentage
     return 0 unless (self.chain.number > 0)

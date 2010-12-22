@@ -4,7 +4,7 @@
       %span{:class => "global-sprites eyebrow #{((choice_counter == 0) ? '' : 'gray')}"}
         = rank(choice_counter)
     %div{:class => "profile-image"}
-      %img{:src => choice.image_url }
+      = image_tag(choice_image_url(choice))
     %ul
       %li{:class => "candidate-name"}
         = choice.name

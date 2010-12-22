@@ -18,4 +18,7 @@ module ChoicesHelper
     ""
   end
   
+  def choice_image_url(choice)
+    "/images/politician-" + choice.name.split.last.downcase + ".jpg"
+  end
 end
