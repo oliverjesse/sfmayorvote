@@ -23,7 +23,7 @@ class Choice < ActiveRecord::Base
   class << self
     # must have ANY words from term in any order
     def for_tweet(tweet)
-      Choice.all.each do |c|
+      Choice.find_each do |c|
         words = c.term.split
         found = false
         words.each do |w|

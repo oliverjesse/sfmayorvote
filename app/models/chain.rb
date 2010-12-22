@@ -22,7 +22,7 @@ class Chain < ActiveRecord::Base
   class << self
     # must have all words from term but in any order
     def for_tweet(tweet)
-      Chain.all.each do |c|
+      Chain.find_each do |c|
         words = c.term.split
         found = true
         words.each do |w|
