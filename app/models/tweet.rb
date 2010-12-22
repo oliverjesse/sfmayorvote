@@ -26,8 +26,8 @@ class Tweet < ActiveRecord::Base
   
   # does not currently update results
   def retract_prior_tweet
-    prior_tweet.choice.update_attribute(:number, prior_tweet.choice.number - 1)
-    prior_tweet.chain.update_attribute(:number, prior_tweet.chain.number - 1)
+    prior_tweet.choice.decrement!(:number)
+    prior_tweet.chain.decrement!(:number)
   end
   
   # possible race condition in which a vote does not get counted?
