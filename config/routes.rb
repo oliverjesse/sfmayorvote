@@ -60,4 +60,5 @@ Markov::Application.routes.draw do
   resources :tweets
   
   match 'vote' => 'votes#create'
+  root :to => "chains#show"
 end

@@ -8,7 +8,7 @@ class ChainsController < ApplicationController
   end
   
   def show
-    @chain = Chain.find(params[:id])
+    @chain = Chain.find(1)
     @choices = @chain.choices.order("number desc")
   end
   
