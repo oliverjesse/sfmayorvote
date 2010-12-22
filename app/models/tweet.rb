@@ -15,19 +15,11 @@ class Tweet < ActiveRecord::Base
   protected
 
   def set_defaults
-    self.chain ||= identify_chain
-    self.choice ||= identify_choice
+    self.chain ||= Chain.for_tweet(self)
+    self.choice ||= Choice.for_tweet(self)
     self.voter ||= Voter.new
   end
-  
-  def identify_chain
-    Chain.for_tweet(self)
-  end
-  
-  def identify_choice
-    Choice.for_tweet(self)
-  end
-  
+
   def prior_tweet
     @prior_tweet ||= Tweet.where(:voter_id => voter.id, :chain_id => chain.id).where("choice_id is not null").order("created_at desc").first
   end
