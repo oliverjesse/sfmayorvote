@@ -1,7 +1,7 @@
 class Choice < ActiveRecord::Base
   belongs_to :chain
   has_many :tweets
-  has_many :voters, :through => :tweets, :select => "DISTINCT voters.*"
+  has_many :voters, :through => :tweets, :uniq => true
 
   def name
     label
