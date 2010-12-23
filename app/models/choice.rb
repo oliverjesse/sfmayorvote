@@ -24,10 +24,6 @@ class Choice < ActiveRecord::Base
       end
       nil
     end
-    
-    def for_chain(chain)
-      chain.choices.order("number desc")
-    end
   end
   
 end
