@@ -14,7 +14,7 @@
       %li{:class => "supporters"}
         = "#{choice.number} supporters"
     %ul{:class => "twitter-profiles"}
-      =render :partial => "voters/small_icon", :collection => choice.voters
+      =render :partial => "voters/small_icon", :collection => choice.voters, :as => :voter
 
     %div{:class => "vote-button-container"}
       %a{:href => "#"}
