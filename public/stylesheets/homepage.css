@@ -312,3 +312,10 @@ fieldset.search {
 p.clearfix {
 	clear: both;
 }
+
+#otherchoice {
+	margin-top: 15px;
+	padding-left: 80px;
+	padding-right: 80px;
+	text-align: center;
+}
