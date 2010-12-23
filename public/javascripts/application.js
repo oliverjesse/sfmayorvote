@@ -7,18 +7,18 @@
 
 Array.prototype.last = function() {return this[this.length-1];}
 
-var	buttonHandler = function(e){
+var buttonHandler = function(e){
   e.preventDefault();
-	// get this candidate's name
-	var candidate = $(e.target).data("tag");
+  // get this candidate's name
+  var candidate = $(e.target).data("tag");
 
-	var tweet_box = $("#tbox iframe").contents().find("textarea");
-	// replace the contents with a vote
-	tweet_box.val("@sfbos: I'd #vote " + candidate + " #sfmayor. How 'bout u? ow.ly/3tvum");
+  var tweet_box = $("#tbox iframe").contents().find("textarea");
+  // replace the contents with a vote
+  tweet_box.val("@sfbos: I'd #vote " + candidate + " #sfmayor. How 'bout u? ow.ly/3tvum");
 };
 
 $(document).ready(function(){
-	$(".vote-button").live("click", buttonHandler);
-	$(".small-vote-button").live("click", buttonHandler);
-	$("#tbox").stickyScroll({ mode: 'manual' });
+  $(".vote-button").live("click", buttonHandler);
+  $(".small-vote-button").live("click", buttonHandler);
+  $("#tbox").stickyScroll({ mode: 'manual' });
 });
