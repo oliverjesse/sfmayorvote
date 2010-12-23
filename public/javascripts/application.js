@@ -5,8 +5,6 @@
 // When click a vote button
 // Append the current candidate to the val
 
-Array.prototype.last = function() {return this[this.length-1];}
-
 var buttonHandler = function(e){
   e.preventDefault();
   // get this candidate's name
