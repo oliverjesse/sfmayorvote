@@ -1,6 +1,6 @@
 class Choice < ActiveRecord::Base
-  belongs_to :chain
-  has_many :tweets
+  belongs_to :chain, :inverse_of => :choices
+  has_many :tweets, :inverse_of => :choice
   has_many :voters, :through => :tweets, :uniq => true
 
   scope :by_votes, order("number desc")

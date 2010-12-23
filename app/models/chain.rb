@@ -1,6 +1,6 @@
 class Chain < ActiveRecord::Base
-  has_many :choices, :dependent => :destroy
-  has_many :tweets
+  has_many :choices, :dependent => :destroy, :inverse_of => :chain
+  has_many :tweets, :inverse_of => :chain
   before_save :update_choices
 
   validates :anchor, :presence => true, :uniqueness => true

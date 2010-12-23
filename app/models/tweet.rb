@@ -1,7 +1,7 @@
 class Tweet < ActiveRecord::Base
-  belongs_to :voter
-  belongs_to :chain
-  belongs_to :choice
+  belongs_to :voter, :inverse_of => :tweets
+  belongs_to :chain, :inverse_of => :tweets
+  belongs_to :choice, :inverse_of => :tweets
 
   before_create :process
   after_initialize :set_defaults
