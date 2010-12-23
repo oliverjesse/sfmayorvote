@@ -24,7 +24,7 @@ module ChoicesHelper
 
   def link_to_choice(text, choice)
     if choice.link.present?
-      link_to(text, choice.link)
+      link_to(text, choice.link, :style => "color: #666;")
     else
       text
     end
