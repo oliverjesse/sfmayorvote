@@ -111,17 +111,21 @@ img.small {
 	-webkit-border-radius: 0px 0px 8px 8px;
 }
 
-.candidate-name {
+.candidate-name, .candidate-name a:link{
+  color: black;
 	font-weight: 300;
 	font-size: 36px;
 }
 
-.candidate-name a:link {
-  color: black;
+.brief-candidate-name a:link {
+  color: #666;
+}
+
+.candidate-name a:link, .brief-candidate-name a:link {
   border-bottom: 1px dotted gray;
 }
 
-.candidate-name a:link:hover {
+.candidate-name a:link:hover, .brief-candidate-name a:link:hover {
   border-bottom: 1px solid gray;
 }
 
