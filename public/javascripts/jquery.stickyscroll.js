@@ -80,9 +80,16 @@
 					settings.container.removeClass('sticky-processed');
 				}
 			};
-			
+
+			function onResize() {
+			  $this.css({
+			    left: $this.parent().offset().left
+			  })
+			}
+
 			onScroll();
 			$(window).scroll(onScroll);
+			$(window).resize(onResize);
 
 		});
 	};
