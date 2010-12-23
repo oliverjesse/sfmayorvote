@@ -3,6 +3,8 @@ class Choice < ActiveRecord::Base
   has_many :tweets
   has_many :voters, :through => :tweets, :uniq => true
 
+  scope :by_votes, order("number desc")
+
   def name
     label
   end

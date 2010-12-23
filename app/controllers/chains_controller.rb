@@ -9,7 +9,7 @@ class ChainsController < ApplicationController
   
   def show
     @chain = Chain.find(1)
-    @choices = @chain.choices.order("number desc")
+    @choices = @chain.choices.by_votes
   end
   
   def create
