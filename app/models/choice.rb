@@ -15,7 +15,7 @@ class Choice < ActiveRecord::Base
 
   def calculate_percentage
     return 0 unless (self.chain.number > 0)
-    (number / self.chain.number.to_f).round(2)
+    number / self.chain.number.to_f
   end
 
   class << self

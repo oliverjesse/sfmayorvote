@@ -1,7 +1,7 @@
 module ChoicesHelper
   
   def pretty_percent(c)
-    (c * 100).to_i.to_s + "%"
+    number_to_percentage(c * 100, :precision => 0)
   end
   
   def pretty_link(link)

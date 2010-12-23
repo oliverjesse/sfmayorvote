@@ -9,7 +9,7 @@
       %li{:class => "candidate-name"}
         = link_to_choice(choice.name, choice)
       %li{:class => "percentage"}
-        = "#{pretty_percent(choice.percent)}"
+        = pretty_percent(choice.percent)
       %li{:class => "global-sprites line"}
       %li{:class => "supporters"}
         = "#{choice.number} supporters"
