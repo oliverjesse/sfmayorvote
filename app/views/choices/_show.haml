@@ -4,10 +4,10 @@
       %span{:class => "global-sprites eyebrow #{((choice_counter == 0) ? '' : 'gray')}"}
         = rank(choice_counter)
     %div{:class => "profile-image"}
-      = image_tag(choice_image_url(choice), :size => '206x206')
+      = link_to_choice(image_tag(choice_image_url(choice), :size => '206x206'), choice)
     %ul
       %li{:class => "candidate-name"}
-        = choice.name
+        = link_to_choice(choice.name, choice)
       %li{:class => "percentage"}
         = "#{pretty_percent(choice.percent)}"
       %li{:class => "global-sprites line"}

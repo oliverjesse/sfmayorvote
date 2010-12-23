@@ -116,6 +116,15 @@ img.small {
 	font-size: 36px;
 }
 
+.candidate-name a:link {
+  color: black;
+  border-bottom: 1px dotted gray;
+}
+
+.candidate-name a:link:hover {
+  border-bottom: 1px solid gray;
+}
+
 .percentage {
 	font-size: 90px;
 	margin-top:-20px;

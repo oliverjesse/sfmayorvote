@@ -21,4 +21,12 @@ module ChoicesHelper
   def choice_image_url(choice)
     "/images/politician-" + choice.name.split.last.downcase + ".jpg"
   end
+
+  def link_to_choice(text, choice)
+    if choice.link.present?
+      link_to(text, choice.link)
+    else
+      text
+    end
+  end
 end
