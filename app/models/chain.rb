@@ -1,6 +1,8 @@
 class Chain < ActiveRecord::Base
   has_many :choices, :dependent => :destroy, :inverse_of => :chain
   has_many :tweets, :inverse_of => :chain
+  has_many :votes, :inverse_of => :chain
+
   before_save :update_choices
 
   validates :anchor, :presence => true, :uniqueness => true
@@ -9,8 +11,8 @@ class Chain < ActiveRecord::Base
   alias_attribute :term, :anchor
 
   def update_percentages
-    if number > 0
-      choices.reload.each do |c|
+    if reload.votes_count > 0
+      choices(true).each do |c|
         c.update_attribute(:percent, c.calculate_percentage)
       end
     end

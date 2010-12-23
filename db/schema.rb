@@ -10,19 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101219214431) do
+ActiveRecord::Schema.define(:version => 20101223210702) do
 
   create_table "chains", :force => true do |t|
     t.string   "anchor"
     t.string   "started_at"
-    t.integer  "number",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "votes_count", :default => 0
   end
 
   create_table "choices", :force => true do |t|
     t.string   "term"
-    t.integer  "number",          :default => 0
     t.integer  "rank"
     t.float    "percent",         :default => 0.0
     t.integer  "markov_chain_id"
@@ -31,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20101219214431) do
     t.integer  "chain_id"
     t.string   "link"
     t.string   "label"
+    t.integer  "votes_count",     :default => 0
   end
 
   create_table "tweets", :force => true do |t|
@@ -52,5 +52,16 @@ ActiveRecord::Schema.define(:version => 20101219214431) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "voter_id",   :null => false
+    t.integer  "tweet_id",   :null => false
+    t.integer  "choice_id",  :null => false
+    t.integer  "chain_id",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["voter_id", "chain_id"], :name => "index_votes_on_voter_id_and_chain_id", :unique => true
 
 end

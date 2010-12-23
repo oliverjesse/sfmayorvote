@@ -3,13 +3,29 @@ class Tweet < ActiveRecord::Base
   belongs_to :chain, :inverse_of => :tweets
   belongs_to :choice, :inverse_of => :tweets
 
-  before_create :process
+  has_one :vote, :inverse_of => :tweet
+
   after_initialize :set_defaults
+  after_create :score
 
   validates :text, :presence => true
 
-  def process
-    score 
+  scope :votable, where("tweets.choice_id is not null")
+
+  # possible race condition in which a vote does not get counted?
+  def score
+    if valid? && chain && choice
+      if prior_tweet = related_tweets.joins(:vote).first
+        prior_tweet.vote.destroy
+      end
+      create_vote(
+        :voter_id => voter_id,
+        :choice_id => choice_id,
+        :chain_id => chain_id
+      )
+      chain.update_percentages
+      self[:scored] = true
+    end
   end
 
   protected
@@ -17,41 +33,9 @@ class Tweet < ActiveRecord::Base
   def set_defaults
     self.chain ||= Chain.for_tweet(self)
     self.choice ||= Choice.for_tweet(self)
-    self.voter ||= Voter.new
   end
 
   def related_tweets
-    voter.tweets.where(:chain_id => chain.id).where("choice_id is not null")
-  end
-
-  def prior_tweet
-    @prior_tweet ||= related_tweets.order("created_at desc").first
-  end
-  
-  # does not currently update results
-  def retract_prior_tweet
-    prior_tweet.choice.decrement!(:number)
-    prior_tweet.chain.decrement!(:number)
-  end
-  
-  # possible race condition in which a vote does not get counted?
-  def score
-    if valid? && chain && choice
-      unless prior_tweet.present?
-        record_score
-      else
-        unless prior_tweet.choice.id == choice.id
-          retract_prior_tweet
-          record_score
-        end
-      end
-      self[:scored] = true
-    end
-  end
-  
-  def record_score
-    choice.increment!(:number) # should we check to see if they've voted before?
-    chain.increment!(:number)
-    chain.update_percentages
+    voter.tweets.where(:chain_id => chain.id).votable
   end
 end
