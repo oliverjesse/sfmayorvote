@@ -19,15 +19,15 @@ var	buttonHandler = function(e){
 	var tweet = tweet_box.val();
 
 	// check for matches. if found, replace them with this name
-	var matched = 0;
+	var matched = false;
 	_.each(candidates,function(c){
 		if (tweet.match(new RegExp(c))){
 			// alert(tweet);
 			tweet_box.val(tweet.replace(new RegExp(c),candidate));
-			matched = 1;
+			matched = true;
 		}
 	});
-	if(matched == 0){
+	if (matched){
 		// append it to the textarea contents
 		// tweet_box.val(tweet + " " + candidate);
 		// replace the contents with a vote
