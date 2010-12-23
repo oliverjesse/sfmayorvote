@@ -6,6 +6,7 @@ class Chain < ActiveRecord::Base
   validates :anchor, :presence => true, :uniqueness => true
 
   attr_accessor :words
+  alias_attribute :term, :anchor
 
   def update_percentages
     if number > 0
@@ -27,11 +28,11 @@ class Chain < ActiveRecord::Base
       end
       nil
     end
-    
+
     def terms
       @@terms ||= all.map(&:anchor).flatten
     end
-    
+
     def vote(termpair, s)
       _anchor = termpair.split.first
       _choice_term = termpair.split.last
@@ -45,15 +46,7 @@ class Chain < ActiveRecord::Base
       _choice.save
     end
   end
-  
-  def term
-    anchor
-  end
-  
-  def term=(opts)
-    anchor=(opts)
-  end
-  
+
   def update_choices
     if words.present?
       words.split(/,/).each do |w|
@@ -61,5 +54,5 @@ class Chain < ActiveRecord::Base
       end
     end
   end
-  
+
 end
