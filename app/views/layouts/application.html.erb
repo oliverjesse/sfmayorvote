@@ -28,7 +28,7 @@
   <div id="container">
   	<div class="container_12">
   		<div class="grid_12 alpha">
-  			<div id="logo" class="explosion"><img src="/images/logo.png" width="125" height="125" /></div>
+  			<div id="logo"><img src="/images/logo.png" width="125" height="125" /></div>
   			<h1>Who should be interim SF Mayor?</h1>
   			<h2>On January 4, 2011, current San Francisco mayor Gavin Newsom becomes California Lieutenant Governor.  The Board of Supervisors gets to choose his replacement.  Tell them how you'd vote.</h2>
   			<h2>Tweet using #vote #sfmayor and the name of your candidate.  We’ll tabulate all results here.</h2>
@@ -45,6 +45,7 @@
           T("#tbox").tweetBox({
             height: 49,
             width: 947,
+            onTweet: function(){ explosion(); },
             defaultContent: "How would you #vote for interim #sfmayor? ow.ly/3tvum",
             label: "<link rel='stylesheet' href='http://<%= request.host_with_port %>/stylesheets/tweetbox.css' type='text/css' />"
           });

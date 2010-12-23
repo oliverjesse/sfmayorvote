@@ -307,6 +307,16 @@ fieldset.search {
 #logo {
 	text-align:center;
 	margin-top: 50px;
+	min-height: 125px;
+}
+
+.egg {
+	left: 380px;
+	top: 0px;
+	position: absolute;
+	width: 924px;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 p.clearfix {
