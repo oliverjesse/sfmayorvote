@@ -51,7 +51,7 @@
 			var $this = $(this),
 				height = $this.attr('offsetHeight'),
 				topOffset = $this.offset().top,
-				leftOffset = $this.offset().left;
+				leftOffset = $this.parent().offset().left;
 			
 			function onScroll() {
 				var top = $(document).scrollTop(),
@@ -82,8 +82,9 @@
 			};
 
 			function onResize() {
+			  leftOffset = $this.parent().offset().left;
 			  $this.css({
-			    left: $this.parent().offset().left
+			    left: leftOffset
 			  })
 			}
 
