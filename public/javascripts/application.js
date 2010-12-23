@@ -15,22 +15,23 @@ var	buttonHandler = function(e){
 	var candidates = ["@DennisHerrera","@TomAmmiano","@BevanDufty","@MarkLeno","@ArtAgnos","@WillieBrown","MattGonzalez","EdHarrington","@DavidChiu","@RossMirkarimi","@MikeHennessey","@DavidCampos","@AaronPeskin"];
 
 	// get the tweet.
-	var tweet = $("#tbox iframe").contents().find("textarea").val();
+	var tweet_box = $("#tbox iframe").contents().find("textarea");
+	var tweet = tweet_box.val();
 
 	// check for matches. if found, replace them with this name
 	var matched = 0;
 	_.each(candidates,function(c){
 		if (tweet.match(new RegExp(c))){
 			// alert(tweet);
-			$("#tbox iframe").contents().find("textarea").val(tweet.replace(new RegExp(c),candidate));			
+			tweet_box.val(tweet.replace(new RegExp(c),candidate));
 			matched = 1;
 		}
-	});	
+	});
 	if(matched == 0){
 		// append it to the textarea contents
-		// $("#tbox iframe").contents().find("textarea").val(tweet + " " + candidate);
+		// tweet_box.val(tweet + " " + candidate);
 		// replace the contents with a vote
-		$("#tbox iframe").contents().find("textarea").val("@sfbos: I'd #vote " + candidate + " #sfmayor. How 'bout u? ow.ly/3tvum");		
+		tweet_box.val("@sfbos: I'd #vote " + candidate + " #sfmayor. How 'bout u? ow.ly/3tvum");
 	}
 };
 
