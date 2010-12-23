@@ -28,7 +28,9 @@ var	buttonHandler = function(e){
 	});	
 	if(matched == 0){
 		// append it to the textarea contents
-		$("#tbox iframe").contents().find("textarea").val(tweet + " " + candidate);			
+		// $("#tbox iframe").contents().find("textarea").val(tweet + " " + candidate);
+		// replace the contents with a vote
+		$("#tbox iframe").contents().find("textarea").val("@sfbos: I'd #vote " + candidate + " #sfmayor. How 'bout u? ow.ly/3tvum");		
 	}
 };
 
