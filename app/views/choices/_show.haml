@@ -12,7 +12,7 @@
         = pretty_percent(choice.percent)
       %li{:class => "global-sprites line"}
       %li{:class => "supporters"}
-        = "#{choice.number} supporters"
+        = pluralize(choice.votes_count, 'supporter')
     %ul{:class => "twitter-profiles"}
       =render :partial => "voters/small_icon", :collection => choice.voters, :as => :voter
 

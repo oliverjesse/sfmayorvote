@@ -108,7 +108,7 @@ describe Tweet do
 
       it "should happen before creation" do
         @tweet.scored.should be_false
-        @tweet.save
+        @tweet.save!
         @tweet.scored.should be_true
       end
 
@@ -117,24 +117,24 @@ describe Tweet do
       end
 
       it "should increment votes for choice" do
-        count = @tweet.choice.number
-        @tweet.save
-        @tweet.choice.number.should == (count + 1)
+        count = @tweet.choice.votes_count
+        @tweet.save!
+        @tweet.choice(true).votes_count.should == (count + 1)
       end
 
       it "should increment votes on chain" do
-        count = @tweet.chain.number
-        @tweet.save
-        @tweet.chain.number.should == (count + 1)
+        count = @tweet.chain.votes_count
+        @tweet.save!
+        @tweet.chain(true).votes_count.should == (count + 1)
       end
 
       it "should calculate new percentages for all choices" do
         all_choices = @tweet.chain.choices
-        [0,1].include?(all_choices.map(&:percent).sum).should be_true
+        [0,1].should include all_choices.map(&:percent).sum
         old_percent = @tweet.choice.percent
-        @tweet.save
+        @tweet.save!
         @tweet.choice.reload.percent.should > old_percent
-        all_choices.map(&:percent).sum.should == 1
+        all_choices.reload.map(&:percent).sum.should == 1
       end
       
       describe "for different replacement vote" do
@@ -144,15 +144,15 @@ describe Tweet do
         end
         
         it "should retract the prior vote" do
-          old_count = @prior_tweet.choice.number
-          @current_tweet.save
-          @prior_tweet.reload.choice.number.should == (old_count - 1)
+          old_count = @prior_tweet.choice(true).votes_count
+          @current_tweet.save!
+          @prior_tweet.choice(true).votes_count.should == (old_count - 1)
         end
         
         it "should record the appropriate choice" do
-          old_count = @current_tweet.choice.number
+          old_count = @current_tweet.choice.votes_count
           @current_tweet.save
-          @current_tweet.reload.choice.number.should == (old_count + 1)
+          @current_tweet.reload.choice.votes_count.should == (old_count + 1)
         end
       end
     end
