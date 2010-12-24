@@ -50,11 +50,6 @@
             label: "<link rel='stylesheet' href='http://<%= request.host_with_port %>/stylesheets/tweetbox.css' type='text/css' />"
           });
           T.hovercards();
-          T('[data-twitter-username]').hovercards({
-            username: function(node) {
-              return $(node).data('twitter-username');
-            }
-          });
 
         });
 
