@@ -64,7 +64,7 @@ input, button {
 
 #tweeting-button {
 	
-	background:url("http://sfmayorvote.com/images/shadow.png") no-repeat scroll 0 0 transparent;
+	background:url("http://sfmayorvote.com/images/sprites.png") no-repeat scroll 0 0 transparent;
 	display:inline-block;
 	overflow:hidden;
 	padding:0;
