@@ -38,7 +38,7 @@ input, button {
 	border: 1px solid #cccccc;
 	-moz-border-radius:4px 0px 0px 4px;
 	-webkit-border-radius:4px 0px 0px 4px;
-	background-image: url('http://localhost:3000/images/shadow.png');
+	background-image: url('http://sfmayorvote.com/images/shadow.png');
 	background-position: top left;
 	resize: none;
 	overflow: none;
@@ -64,7 +64,7 @@ input, button {
 
 #tweeting-button {
 	
-	background:url("http://localhost:3000/images/sprites.png") no-repeat scroll 0 0 transparent;
+	background:url("http://sfmayorvote.com/images/shadow.png") no-repeat scroll 0 0 transparent;
 	display:inline-block;
 	overflow:hidden;
 	padding:0;
