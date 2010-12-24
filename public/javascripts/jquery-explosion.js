@@ -36,10 +36,16 @@ function explosion() {
 		  $('.soil').animate({scale: 1.7, opacity: 0}, 10000);
 		});
 	});
-
-
 }
 
+// preload explosion images
+$.fn.preload = function() {
+    this.each(function(){
+        $('<img/>')[0].src = this;
+    });
+}
 
-
-
+$(['/images/explosion_burst.png',
+	 '/images/explosion_inferno.png',
+	 '/images/explosion_dust.png',
+	 '/images/explosion_soil.png']).preload();
