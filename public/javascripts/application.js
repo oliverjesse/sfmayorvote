@@ -18,8 +18,18 @@ var buttonHandler = function(e){
   tweet_box.val("@sfbos: I'd #vote " + candidate + " #sfmayor. How 'bout u? ow.ly/3tvum");
 };
 
+// Redirect iPhone/iPod visitors
+function isiPhone(){
+    return (
+        (navigator.platform.indexOf("iPhone") != -1) ||
+        (navigator.platform.indexOf("iPod") != -1)
+    );
+}
+
 $(document).ready(function(){
   $(".vote-button").live("click", buttonHandler);
   $(".small-vote-button").live("click", buttonHandler);
-  $("#tbox").stickyScroll({ mode: 'manual' });
+	if(!isiPhone()){
+  	$("#tbox").stickyScroll({ mode: 'manual' });
+	}
 });
