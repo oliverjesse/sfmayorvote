@@ -22,5 +22,4 @@ $(document).ready(function(){
   $(".vote-button").live("click", buttonHandler);
   $(".small-vote-button").live("click", buttonHandler);
   $("#tbox").stickyScroll({ mode: 'manual' });
-	$("#logo img").click(function(e){explosion();});
 });
