@@ -14,6 +14,8 @@ var buttonHandler = function(e){
   }
 
   var tweet_box = $("#tbox iframe").contents().find("textarea");
+
+  tweet_box.focus(); // so the character count updates, and to draw the user's attention
   // replace the contents with a vote
   tweet_box.val("@sfbos: I'd #vote " + candidate + " #sfmayor. How 'bout u? ow.ly/3tvum");
 };
