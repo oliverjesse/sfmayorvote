@@ -1,4 +1,6 @@
 class ChainsController < ApplicationController
+  caches_page :show
+
   def new
     @chain = Chain.new
   end
