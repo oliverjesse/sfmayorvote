@@ -18,7 +18,12 @@ var buttonHandler = function(e){
   tweet_box.focus(); // so the character count updates, and to draw the user's attention
   // replace the contents with a vote
   tweet_box.val("@sfbos: I'd #vote " + candidate + " #sfmayor. How 'bout u? ow.ly/3tvum");
+  currentSelection = candidate;
 };
+
+function markVoted(choice) {
+  $('.vote-button[data-tag=' + choice + ']').addClass('vote-confirmed');
+}
 
 // Redirect iPhone/iPod visitors
 function isiPhone(){

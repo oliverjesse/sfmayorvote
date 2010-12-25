@@ -54,7 +54,10 @@
           T("#tbox").tweetBox({
             height: 49,
             width: 947,
-            onTweet: function(){ explosion(); },
+            onTweet: function(){
+              explosion();
+              markVoted(currentSelection);
+            },
             defaultContent: "How would you #vote for interim #sfmayor? http://ow.ly/3tvum",
             label: "<link rel='stylesheet' href='http://<%= request.host_with_port %>/stylesheets/tweetbox.css' type='text/css' />"
           });
