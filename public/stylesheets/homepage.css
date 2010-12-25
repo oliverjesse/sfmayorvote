@@ -163,25 +163,25 @@ img.small {
 	width: 206px;
 }
 
-.small-vote-button {
+.vote-button.small-button {
 	background-position: -1px -115px;
 	height: 27px;
 	width: 160px;
 }
 
-.small-vote-button:hover {
+.vote-button.small-button:hover {
 	background-position: -162px -115px;
 	height: 27px;
 	width: 160px;
 }
 
-.small-vote-confirm {
+.vote-button.small-button.vote-confirmed {
 	background-position: -323px -115px;
 	height: 27px;
 	width: 160px;
 }
 
-.vote-confirm {
+.vote-button.vote-confirmed {
 	background-position: -415px -1px;
 	height: 45px;
 	width: 206px;

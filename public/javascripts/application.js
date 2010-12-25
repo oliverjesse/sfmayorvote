@@ -30,7 +30,6 @@ function isiPhone(){
 
 $(document).ready(function(){
   $(".vote-button").live("click", buttonHandler);
-  $(".small-vote-button").live("click", buttonHandler);
 	if(!isiPhone()){
   	$("#tbox").stickyScroll({ mode: 'manual' });
 	}
