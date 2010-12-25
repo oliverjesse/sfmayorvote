@@ -26,27 +26,27 @@
   <link rel="stylesheet" href="/stylesheets/grid.css" type="text/css" />
   <link rel="stylesheet" href="/stylesheets/homepage.css" type="text/css" />
 
-  	<script src="/javascripts/cufon-yui.js" type="text/javascript"></script>
-	<script src="/javascripts/Univers_300.font.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		Cufon.replace('.percentage'); // Requires a selector engine for IE 6-7, see above
-		Cufon.replace('.candidate-name');
-	</script>
+  <script src="/javascripts/cufon-yui.js" type="text/javascript"></script>
+  <script src="/javascripts/Univers_300.font.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    Cufon.replace('.percentage'); // Requires a selector engine for IE 6-7, see above
+    Cufon.replace('.candidate-name');
+  </script>
 </head>
 <body>
   <div id="container">
-  	<div class="container_12">
-  		<div class="grid_12 alpha">
-  			<div id="logo"><img src="/images/logo.png" width="125" height="125" /></div>
-  			<h1>Who should be interim SF Mayor?</h1>
-  			<h2>On January 4, 2011, current San Francisco mayor Gavin Newsom becomes California Lieutenant Governor.  The Board of Supervisors gets to choose his replacement.  Tell them how you'd vote.</h2>
-  			<h2>Tweet using #vote #sfmayor and the name of your candidate.  We’ll tabulate all results here.</h2>
-  		</div>
-  	</div>
+    <div class="container_12">
+      <div class="grid_12 alpha">
+        <div id="logo"><img src="/images/logo.png" width="125" height="125" /></div>
+        <h1>Who should be interim SF Mayor?</h1>
+        <h2>On January 4, 2011, current San Francisco mayor Gavin Newsom becomes California Lieutenant Governor.  The Board of Supervisors gets to choose his replacement.  Tell them how you'd vote.</h2>
+        <h2>Tweet using #vote #sfmayor and the name of your candidate.  We’ll tabulate all results here.</h2>
+      </div>
+    </div>
 
-	<div class="container_12">
-		<div class="grid_12 alpha tbox_frame">
-			<div id="tbox"></div>
+  <div class="container_12">
+    <div class="grid_12 alpha tbox_frame">
+      <div id="tbox"></div>
       <script type="text/javascript">
 
         twttr.anywhere(function (T) {
@@ -68,35 +68,35 @@
         });
 
       </script>
-		</div>
-	</div>
-	
-	<div class="container_12">
-		<div class="grid_12 alpha">
-			<form method="get" id="searchform" action="http://www.ddd.com/">
-			<fieldset class="search">
-				<input type="text" class="box" value="#vote4 #sfmayor (#name of your candidate)"/>
-				<button class="global-sprites btn" title="Submit Search"></button>
-			</fieldset>
-			</form>
-		</div>
-	</div>
-	
+    </div>
+  </div>
+  
+  <div class="container_12">
+    <div class="grid_12 alpha">
+      <form method="get" id="searchform" action="http://www.ddd.com/">
+      <fieldset class="search">
+        <input type="text" class="box" value="#vote4 #sfmayor (#name of your candidate)"/>
+        <button class="global-sprites btn" title="Submit Search"></button>
+      </fieldset>
+      </form>
+    </div>
+  </div>
+  
   <%= yield -%>
 
-	<div class="container_12">
-		<div class="grid_12 alpha">
-		  <div id="otherchoice">
-			  <h2>Don't see your pick?  Tweet their name with #sfmayor #vote anyway.<br>We'll check for new contenders daily and add them here.</h2>
-			</div>
-		</div>
-	</div>
+  <div class="container_12">
+    <div class="grid_12 alpha">
+      <div id="otherchoice">
+        <h2>Don't see your pick?  Tweet their name with #sfmayor #vote anyway.<br>We'll check for new contenders daily and add them here.</h2>
+      </div>
+    </div>
+  </div>
 
-	<div class="container_12">
-		<div class="grid_12 footer">©2010 by <a href="http://www.circlevoting.com/team">Jesse Sanford</a> and <a href="http://www.participantlabs.com/">Participant Labs</a></div>
-	</div>
-	
-	<script type="text/javascript"> Cufon.now(); </script>
+  <div class="container_12">
+    <div class="grid_12 footer">©2010 by <a href="http://www.circlevoting.com/team">Jesse Sanford</a> and <a href="http://www.participantlabs.com/">Participant Labs</a></div>
+  </div>
+  
+  <script type="text/javascript"> Cufon.now(); </script>
 
     <p class="clearfix">
   </div>
