@@ -5,6 +5,14 @@
 // When click a vote button
 // Append the current candidate to the val
 
+function markVoted(choice) {
+  var button = $('.vote-button[data-tag=' + choice + ']');
+  button.addClass('vote-confirmed');
+  if (!button.is('.small-button')) {
+    button.text("voted for " + choice);
+  }
+}
+
 var buttonHandler = function(e){
   e.preventDefault();
   // get this candidate's name
@@ -20,10 +28,6 @@ var buttonHandler = function(e){
   tweet_box.val("@sfbos: I'd #vote " + candidate + " #sfmayor. How 'bout u? ow.ly/3tvum");
   currentSelection = candidate;
 };
-
-function markVoted(choice) {
-  $('.vote-button[data-tag=' + choice + ']').addClass('vote-confirmed');
-}
 
 // Redirect iPhone/iPod visitors
 function isiPhone(){
