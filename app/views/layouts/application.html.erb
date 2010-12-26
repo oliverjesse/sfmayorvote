@@ -50,6 +50,7 @@
       <script type="text/javascript">
 
         twttr.anywhere(function (T) {
+          var host = "http://<%= request.host_with_port %>"
 
           T("#tbox").tweetBox({
             height: 49,
@@ -59,7 +60,7 @@
               markVoted(currentSelection);
             },
             defaultContent: "How would you #vote for interim #sfmayor? http://ow.ly/3tvum",
-            label: "<link rel='stylesheet' href='http://<%= request.host_with_port %>/stylesheets/tweetbox.css' type='text/css' />"
+            label: "<link rel='stylesheet' href='" + host + "/stylesheets/tweetbox.css' type='text/css' />"
           });
           T.hovercards();
           T('[data-twitter-username]').hovercards({
@@ -67,6 +68,16 @@
               return $(node).data('twitter-username');
             }
           });
+
+          if (T.isConnected()) {
+            var twitter_id = T.currentUser.data('id');
+            $.post(host + "/voters/" + twitter_id, function(data) {
+              $.each(data.voter.votes, function() {
+                var handle = this.choice.term.split(' ')[0];
+                markVoted(handle);
+              });
+            });
+          }
 
         });
 
