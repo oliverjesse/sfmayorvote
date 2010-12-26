@@ -10,7 +10,7 @@ class ChainsController < ApplicationController
   end
   
   def show
-    @chain = Chain.find(1)
+    @chain = Chain.find(params[:id])
     @choices = @chain.choices.by_votes
   end
   
