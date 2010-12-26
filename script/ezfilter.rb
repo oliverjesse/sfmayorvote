@@ -22,5 +22,7 @@ Twitter.filter_stream(USERNAME, PASSWORD, { :keywords => tracks }) do |status|
     'text' => status[:text]
   )
   tweet.save && (Rails.logger.info "Successfully saved Tweet for user #{status[:user][:screen_name]}\n")
-  Rails.root.join('public/index.html').unlink
+
+  cached_index = Rails.root.join('public/index.html')
+  cached_index.unlink if cached_index.file?
 end
