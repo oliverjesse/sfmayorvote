@@ -33,7 +33,7 @@ gem "em-http-request"
 # gem 'em_postgresql'
 gem 'pg'
 gem 'jquery-rails', '>= 0.2.6'
-
+gem 'hoptoad_notifier'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
