@@ -14,7 +14,7 @@
       %li{:class => "supporters"}
         = pluralize(choice.votes_count, 'supporter')
     %ul{:class => "twitter-profiles"}
-      =render :partial => "voters/small_icon", :collection => choice.voters, :as => :voter
+      =render :partial => "votes/voter_icon", :collection => choice.votes, :as => :vote
 
     %div{:class => "vote-button-container"}
       %a{:href => "#"}
