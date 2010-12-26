@@ -19,8 +19,10 @@ Twitter.filter_stream(USERNAME, PASSWORD, { :keywords => tracks }) do |status|
   voter.name = status[:user][:name]
   voter.profile_image_url = status[:user][:profile_image_url]
   voter.save
-  voter.tweets.create(
+  tweet = voter.tweets.build(
     'twitter_id' => status[:id],
     'text' => status[:text]
-  ) && (Rails.logger.info "Successfully saved Tweet for user #{status[:user][:screen_name]}\n")
+  )
+  tweet.save && (Rails.logger.info "Successfully saved Tweet for user #{status[:user][:screen_name]}\n")
+  Rails.root.join('public/index.html').unlink
 end
