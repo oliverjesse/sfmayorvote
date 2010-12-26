@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101223210702) do
+ActiveRecord::Schema.define(:version => 20101226040756) do
 
   create_table "chains", :force => true do |t|
     t.string   "anchor"
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(:version => 20101223210702) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "voters", ["screen_name"], :name => "index_voters_on_screen_name"
+  add_index "voters", ["twitter_id"], :name => "index_voters_on_twitter_id", :unique => true
 
   create_table "votes", :force => true do |t|
     t.integer  "voter_id",   :null => false

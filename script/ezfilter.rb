@@ -14,10 +14,8 @@ g = Growl.new 'localhost', 'growltweet', ['tweet'], ['tweet'], 'Owlgray'
 
 Twitter.filter_stream(USERNAME, PASSWORD, { :keywords => tracks }) do |status|
   Rails.logger.info "Waking up to smell the Tweet: #{status[:text]}\n"
-  voter = Voter.find_or_initialize_by_screen_name(status[:user][:screen_name])
-  voter.twitter_id = status[:user][:id]
-  voter.name = status[:user][:name]
-  voter.profile_image_url = status[:user][:profile_image_url]
+  voter = Voter.find_or_initialize_by_twitter_id(status[:user][:id])
+  voter.attributes = status[:user].slice(:name, :screen_name, :profile_image_url)
   voter.save
   tweet = voter.tweets.build(
     'twitter_id' => status[:id],
