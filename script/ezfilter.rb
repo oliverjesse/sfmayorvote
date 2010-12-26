@@ -29,8 +29,11 @@ begin
       cached_index.unlink if cached_index.file?
     rescue Exception => e
       HoptoadNotifier.notify(e)
+      puts "Skipping status #{status.inspect} which failed with #{e.inspect}, #{e.message}"
+      puts e.backtrace
     end
   end
 rescue Exception => e
   HoptoadNotifier.notify(e)
+  raise
 end
