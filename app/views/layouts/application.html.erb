@@ -82,8 +82,8 @@
           });
 
           if (T.isConnected()) {
-            var twitter_id = T.currentUser.data('id');
-            $.post(host + "/voters/" + twitter_id, function(data) {
+            var screen_name = T.currentUser.data('screen_name');
+            $.post(host + "/voters/" + screen_name, function(data) {
               $.each(data.voter.votes, function() {
                 var handle = this.choice.term.split(' ')[0];
                 markVoted(handle);
