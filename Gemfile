@@ -24,7 +24,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem "tweetstream" #, :git => "git://github.com/erichurst/tweetstream.git"
 gem "haml"
 gem "yajl-ruby"
-gem "patron"
+gem "patron", '0.4.9'
 gem "json"
 gem "g"
 gem "ruby-growl"
