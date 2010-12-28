@@ -5,6 +5,11 @@
 // When click a vote button
 // Append the current candidate to the val
 
+function tweetFeedback {
+  // show geary w/ message
+  
+}
+
 function markVoted(choice) {
   var button = $('.vote-button[data-tag=' + choice + ']');
   button.addClass('vote-confirmed');

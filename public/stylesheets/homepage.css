@@ -335,3 +335,13 @@ p.clearfix {
 	padding-right: 80px;
 	text-align: center;
 }
+
+.confirmation{
+	width:100%;
+	text-align:center;
+	background-color:#a1cdc1;
+	height:180px;
+  position: absolute;
+  bottom: 0px;
+  border-top: 2px #388286 solid;
+}
