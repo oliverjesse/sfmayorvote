@@ -336,12 +336,50 @@ p.clearfix {
 	text-align: center;
 }
 
-.confirmation{
+#prompt {
 	width:100%;
-	text-align:center;
-	background-color:#a1cdc1;
-	height:180px;
+	background-color: #a1cdc1;
+	padding: 0px;
+	height: 180px;
   position: absolute;
   bottom: 0px;
   border-top: 2px #388286 solid;
+  margin: 0px;
+}
+
+#prompt > div {
+	background-image: url("../images/confirmation.png");
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	margin-left: auto; 
+	margin-right: auto; 
+	width: 940px; 
+	height: 180px;
+}
+
+#prompt #bubble {
+	height: 71px;
+	background-color:#c8e0d1;
+	margin: 35px 20px 0px 149px;
+	line-height: 70px;
+	padding-left:20px;
+	-moz-border-radius:8px; 
+	-webkit-border-radius:8px;
+	width: 600px;
+}
+
+#prompt #byline {
+	font-family: Arial; 
+	color: #5c9787; 
+	font-size: 11px; 
+	margin-top: 8px; 
+	margin-left:149px;
+}
+
+.prompt-text
+{
+	font-family: "museo-slab-1","museo-slab-2";
+	color: #378185;
+	font-size: 24px;
+	letter-spacing: -0.03em;
 }
