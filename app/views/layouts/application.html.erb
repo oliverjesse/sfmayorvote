@@ -13,6 +13,8 @@
   <meta property="og:description"
         content="On January 4, 2011, current San Francisco mayor Gavin Newsom becomes California Lieutenant Governor. The Board of Supervisors gets to choose his replacement. Tell them how you'd vote."/>
 
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -82,8 +84,8 @@
           });
 
           if (T.isConnected()) {
-            var twitter_id = T.currentUser.data('id');
-            $.post(host + "/voters/" + twitter_id, function(data) {
+            var screen_name = T.currentUser.data('screen_name');
+            $.post(host + "/voters/" + screen_name, function(data) {
               $.each(data.voter.votes, function() {
                 var handle = this.choice.term.split(' ')[0];
                 markVoted(handle);

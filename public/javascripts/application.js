@@ -25,7 +25,7 @@ var buttonHandler = function(e){
 
   tweet_box.focus(); // so the character count updates, and to draw the user's attention
   // replace the contents with a vote
-  tweet_box.val("I'd #vote " + candidate + " #sfmayor. How 'bout u? http://sfmayorvote.com @sfbos");
+  tweet_box.val("I'd #vote " + candidate + " #sfmayor. How about you? http://sfmayorvote.com @sfbos");
   currentSelection = candidate;
 };
 

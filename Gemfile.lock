@@ -58,7 +58,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    patron (0.4.10)
+    patron (0.4.9)
     pg (0.10.0)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -114,7 +114,7 @@ DEPENDENCIES
   hoptoad_notifier
   jquery-rails (>= 0.2.6)
   json
-  patron
+  patron (= 0.4.9)
   pg
   rails (= 3.0.3)
   rspec-rails
