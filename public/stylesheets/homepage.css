@@ -341,8 +341,8 @@ p.clearfix {
 	background-color: #a1cdc1;
 	padding: 0px;
 	height: 180px;
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  bottom: -182px;
   border-top: 2px #388286 solid;
   margin: 0px;
 }
