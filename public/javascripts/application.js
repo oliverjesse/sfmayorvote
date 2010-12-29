@@ -5,9 +5,14 @@
 // When click a vote button
 // Append the current candidate to the val
 
-function tweetFeedback {
-  // show geary w/ message
+function showPrompt(message) {
+  $("#bubble .prompt-text").text(message);
   
+  $('#prompt').animate({bottom: 0}, function () {
+    setTimeout(function() {
+      $('#prompt').animate({bottom: -182});
+    }, 3000);
+  });
 }
 
 function markVoted(choice) {
