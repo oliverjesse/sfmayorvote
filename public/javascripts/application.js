@@ -28,6 +28,8 @@ function markVoted(choice) {
   }
 }
 
+var approvalPromptShown = false;
+
 var buttonHandler = function(e){
   e.preventDefault();
   // get this candidate's name
@@ -51,6 +53,11 @@ var buttonHandler = function(e){
     message = current_selection[0];
   }
   tweet_box.val("I'd #vote " + message + " #sfmayor. How about you? http://sfmayorvote.com @sfbos");
+
+  if (current_selection.length == 1 && !approvalPromptShown) {
+    showPrompt("Yep, select as many as you approve of, then tweet to vote.");
+    approvalPromptShown = true
+  }
 };
 
 // Redirect iPhone/iPod visitors
