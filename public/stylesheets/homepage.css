@@ -60,6 +60,12 @@ body {
   text-align: center;
 }
 
+ul.twitter-profiles {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
 .poli-container .twitter-profiles 
 {
 	margin-top:4px;
@@ -67,7 +73,7 @@ body {
 	height: 24px;
 }
 
-.poli-container .twitter-profiles li
+.twitter-profiles li
 {
 	margin:0px;
 	padding-right:1px;

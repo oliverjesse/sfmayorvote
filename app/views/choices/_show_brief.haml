@@ -7,5 +7,7 @@
     %div{:class => "grid_1"}
       = choice.votes_count
     %div{:class => "grid_3", :style => "margin-top: 13px;"}
+      %ul{:class => "twitter-profiles"}
+        = render :partial => "votes/voter_icon", :collection => choice.votes.order("created_at desc").limit(7), :as => :vote
     %div{:class => "grid_3 omega", :style => "text-align:right; padding-right: 30px; margin-top: 13px;"}
       %span{:class => "global-sprites small-button vote-button", :data => { :tag => choice.handle }}
