@@ -15,16 +15,17 @@ class Tweet < ActiveRecord::Base
   # possible race condition in which a vote does not get counted?
   def score
     if valid? && chain && choice
-      if prior_tweet = related_tweets.joins(:vote).first
-        prior_tweet.vote.destroy
+      prior_tweet = related_tweets.joins(:vote).first
+      if new_record? || prior_tweet.created_at < created_at
+        prior_tweet.vote.destroy if prior_tweet
+        create_vote(
+          :voter_id => voter_id,
+          :choice_id => choice_id,
+          :chain_id => chain_id
+        )
+        chain.update_percentages
+        self[:scored] = true
       end
-      create_vote(
-        :voter_id => voter_id,
-        :choice_id => choice_id,
-        :chain_id => chain_id
-      )
-      chain.update_percentages
-      self[:scored] = true
     end
   end
 
