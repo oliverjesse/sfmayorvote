@@ -35,6 +35,10 @@ class Twitter
     def search(query)
       request("http://search.twitter.com/search.json?q=#{CGI.escape(query)}&show_user=true")
     end
+    
+    def next_page(query)
+      request("http://search.twitter.com/search.json" + query)
+    end
 
     def user(screen_name)
       request("http://api.twitter.com/1/users/show.json?screen_name=#{screen_name}")
