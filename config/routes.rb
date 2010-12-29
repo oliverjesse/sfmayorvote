@@ -58,7 +58,10 @@ Markov::Application.routes.draw do
   
   resources :chains
   resources :tweets
-  
+  resources :choices, :only => [] do
+    resources :voters, :to => 'choices/voters', :only => :index
+  end
+
   match 'vote' => 'votes#create'
   match 'voters/:id' => 'chains/voters#show', :chain_id => 1
   root :to => "chains#show", :id => 1

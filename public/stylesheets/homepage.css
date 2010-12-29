@@ -142,7 +142,7 @@ img.small {
 	color: #cccccc;
 }
 
-.supporters {
+.supporters a, .supporters a:link {
 	font-size: 13px;
 	color: #378187;
 }
@@ -168,6 +168,8 @@ img.small {
 	height: 45px;
 	width: 206px;
 }
+
+.vote-button-container a:link, .vote-button-container a:hover, .vote-button-container a:visited {color: #fff; text-decoration:none;}
 
 .vote-button.small-button {
 	background-position: -1px -115px;
@@ -230,14 +232,6 @@ img.small {
 #special-red {
 	color: #c50000;
 }
-
-a:link {color: #fff; text-decoration:none;}
-a:hover {color: #fff; text-decoration: none;}
-a:visited {color: #fff; text-decoration:none;}
-
-a:link {color: #fff; text-decoration:none;}
-a:hover {color: #fff; text-decoration: none;}
-a:visited {color: #fff; text-decoration:none;}
 
 .footer {
 	font-family: "museo-slab-1","museo-slab-2";
