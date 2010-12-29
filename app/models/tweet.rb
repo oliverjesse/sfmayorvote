@@ -49,6 +49,11 @@ class Tweet < ActiveRecord::Base
     end
   end
 
+  def refresh_associations
+    self.chain = Chain.for_tweet(self)
+    self.choice = Choice.for_tweet(self)
+  end
+
   protected
 
   def set_defaults
