@@ -16,16 +16,15 @@ class Tweet < ActiveRecord::Base
   def score
     if valid? && chain && choice
       prior_tweet = related_tweets.joins(:vote).first
-      if new_record? || prior_tweet.created_at < created_at
-        prior_tweet.vote.destroy if prior_tweet
-        create_vote(
-          :voter_id => voter_id,
-          :choice_id => choice_id,
-          :chain_id => chain_id
-        )
-        chain.update_percentages
-        self[:scored] = true
-      end
+      return if prior_tweet && prior_tweet.created_at > created_at
+      prior_tweet.vote.destroy if prior_tweet
+      create_vote(
+        :voter_id => voter_id,
+        :choice_id => choice_id,
+        :chain_id => chain_id
+      )
+      chain.update_percentages
+      self[:scored] = true
     end
   end
 
