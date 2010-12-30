@@ -21,7 +21,8 @@ begin
       voter.save
       tweet = voter.tweets.build(
         'twitter_id' => status[:id],
-        'text' => status[:text]
+        'text' => status[:text],
+        'tweeted_at' => status[:created_at]
       )
       tweet.save && (Rails.logger.info "Successfully saved Tweet for user #{status[:user][:screen_name]}\n")
 
