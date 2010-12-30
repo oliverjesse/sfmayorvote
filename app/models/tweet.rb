@@ -36,6 +36,10 @@ class Tweet < ActiveRecord::Base
     self.choices = related_choices
   end
 
+  def tweeted_at
+    self[:tweeted_at] || created_at
+  end
+
   protected
 
   def related_chain
