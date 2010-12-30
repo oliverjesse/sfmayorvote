@@ -69,7 +69,7 @@ class Tweet < ActiveRecord::Base
   def related_choices
     # must have ANY words from term in any order
     chain.choices.select do |c|
-      c.term.split.any? {|word| text =~ /\b#{word}\b/i }
+      c.term.split.any? {|word| text =~ /#{word}/i }
     end
   end
 
