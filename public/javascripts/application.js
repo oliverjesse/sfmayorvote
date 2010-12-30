@@ -11,7 +11,7 @@ function showPrompt(message) {
   $('#prompt').animate({bottom: 0}, function () {
     setTimeout(function() {
       $('#prompt').animate({bottom: -182});
-    }, 3000);
+    }, 6000);
   });
 }
 
@@ -77,7 +77,7 @@ var buttonHandler = function(e){
   tweet_box.val(message);
 
   if (current_selection.length == 1 && !approvalPromptShown) {
-    showPrompt("Yep, select as many as you approve of, then tweet to vote.");
+    showPrompt("Yep, select as many as you approve of then tweet to vote.");
     approvalPromptShown = true
   }
 };
