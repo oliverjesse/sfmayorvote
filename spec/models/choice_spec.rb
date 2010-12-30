@@ -39,6 +39,18 @@ describe Choice do
       @tweet.choices.should be_present
       @tweet.choices.should =~ @choices
     end
+
+    describe "when choices are ambiguous" do
+      before(:each) do
+        @mar = @chain.choices.create!(:term => "@eric415 EricMar Mar")
+        @marcy = @chain.choices.create!(:term => "@MarcyBerry MarcyBerry Marcy Berry")
+      end
+
+      it "should select the one that full-matches the term" do
+        tweet = Tweet.new(:text => "I'd like to #make #contact with Marcy")
+        tweet.choices.should_not include(@mar)
+      end
+    end
   end
 
 end

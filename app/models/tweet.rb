@@ -70,7 +70,7 @@ class Tweet < ActiveRecord::Base
     # must have ANY words from term in any order
     return [] if !chain
     chain.choices.select do |c|
-      c.term.split.any? {|word| text =~ /#{word}/i }
+      c.term.split.any? {|word| text =~ /(?:[^a-zA-Z0-9]|^)#{word}(?:[^a-zA-Z0-9]|$)/i }
     end
   end
 
