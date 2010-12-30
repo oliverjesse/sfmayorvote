@@ -47,7 +47,7 @@ describe Tweet do
     
     it "should not get a chain or a choice" do
       @tweet.chain.should be_nil
-      @tweet.choice.should be_nil
+      @tweet.choices.should be_empty
     end    
   end
   
@@ -62,7 +62,7 @@ describe Tweet do
     
     it "should have a voter, chain and choice id after saving if valid" do
       @tweet.save
-      @tweet.choice_id.should_not be_nil
+      @tweet.choices.should be_present
       @tweet.chain_id.should_not be_nil
       @tweet.voter_id.should_not be_nil
     end
@@ -81,13 +81,14 @@ describe Tweet do
       end
 
       it "should have a term found in tweet text" do
-        @tweet.text.should =~ /#{@tweet.choice.term}/
+        @tweet.text.should =~ /#{@tweet.choices.first.term}/
       end
 
       it "should be from the same chain" do
-        @tweet.choice.chain_id.should_not be_nil
         @tweet.chain.should_not be_nil
-        @tweet.choice.chain_id.should == @tweet.chain.id
+        @tweet.choices.each do |choice|
+          choice.chain.should == @tweet.chain
+        end
       end
     end
   end
@@ -117,9 +118,9 @@ describe Tweet do
       end
 
       it "should increment votes for choice" do
-        count = @tweet.choice.votes_count
+        count = @tweet.choices.first.votes_count
         @tweet.save!
-        @tweet.choice(true).votes_count.should == (count + 1)
+        @tweet.choices(true).first.votes_count.should == (count + 1)
       end
 
       it "should increment votes on chain" do
@@ -131,9 +132,9 @@ describe Tweet do
       it "should calculate new percentages for all choices" do
         all_choices = @tweet.chain.choices
         [0,1].should include all_choices.map(&:percent).sum
-        old_percent = @tweet.choice.percent
+        old_percent = @tweet.choices.first.percent
         @tweet.save!
-        @tweet.choice.reload.percent.should > old_percent
+        @tweet.choices(true).first.percent.should > old_percent
         all_choices.reload.map(&:percent).sum.should == 1
       end
       
@@ -144,15 +145,15 @@ describe Tweet do
         end
         
         it "should retract the prior vote" do
-          old_count = @prior_tweet.choice(true).votes_count
+          old_count = @prior_tweet.choices(true).first.votes_count
           @current_tweet.save!
-          @prior_tweet.choice(true).votes_count.should == (old_count - 1)
+          @prior_tweet.choices(true).first.votes_count.should == (old_count - 1)
         end
         
         it "should record the appropriate choice" do
-          old_count = @current_tweet.choice.votes_count
+          old_count = @current_tweet.choices.first.votes_count
           @current_tweet.save
-          @current_tweet.reload.choice.votes_count.should == (old_count + 1)
+          @current_tweet.reload.choices.first.votes_count.should == (old_count + 1)
         end
       end
     end

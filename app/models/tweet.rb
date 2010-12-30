@@ -11,16 +11,16 @@ class Tweet < ActiveRecord::Base
 
   validates :text, :presence => true
 
-  scope :votable, where("tweets.choice_id is not null")
+  scope :votable, joins(:tweet_choices)
 
   # possible race condition in which a vote does not get counted?
   def score
     if valid? && chain && choices.present?
-      prior_tweet = related_tweets.joins(:vote).first
+      prior_tweet = related_tweets.joins(:votes).first
       return if prior_tweet && prior_tweet.created_at > created_at
       prior_tweet.votes.destroy_all if prior_tweet
       choices.each do |choice|
-        create_vote(
+        votes.create!(
           :voter_id => voter_id,
           :choice_id => choice.id,
           :chain_id => chain_id
@@ -68,6 +68,7 @@ class Tweet < ActiveRecord::Base
 
   def related_choices
     # must have ANY words from term in any order
+    return [] if !chain
     chain.choices.select do |c|
       c.term.split.any? {|word| text =~ /#{word}/i }
     end
