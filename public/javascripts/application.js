@@ -15,6 +15,11 @@ function showPrompt(message) {
   });
 }
 
+function unmarkSelected(choice) {
+  var button = $('.vote-button[data-tag=' + choice + ']');
+  button.removeClass('vote-confirmed');
+}
+
 function markSelected(choice) {
   var button = $('.vote-button[data-tag=' + choice + ']');
   button.addClass('vote-confirmed');
@@ -37,10 +42,16 @@ var buttonHandler = function(e){
   if (candidate == undefined) {
     candidate = $(e.target).parent().data('tag')
   }
-  markSelected(candidate);
-  current_selection.push(candidate);
 
   var tweet_box = $("#tbox iframe").contents().find("textarea");
+  var current_index = current_selection.indexOf(candidate);
+  if (current_index == -1) {
+    markSelected(candidate);
+    current_selection.push(candidate);
+  } else {
+    unmarkSelected(candidate);
+    current_selection.delete(current_index);
+  }
 
   tweet_box.focus(); // so the character count updates, and to draw the user's attention
   // replace the contents with a vote
