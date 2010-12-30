@@ -49,7 +49,7 @@ var buttonHandler = function(e){
     current_selection.push(candidate);
   } else {
     unmarkSelected(candidate);
-    current_selection.delete(current_index);
+    current_selection.splice(current_index, 1);
   }
 
   var tweet_box = $("#tbox iframe").contents().find("textarea");
@@ -70,6 +70,9 @@ var buttonHandler = function(e){
     message += " http://sfmayorvote.com @sfbos";
   } else if (message.length <= 117) {
     message += " http://sfmayorvote.com";
+  }
+  if (current_selection.length == 0) {
+    message = "How would you #vote for interim #sfmayor? http://sfmayorvote.com";
   }
   tweet_box.val(message);
 
