@@ -12,7 +12,7 @@
         = pretty_percent(choice.percent)
       %li{:class => "global-sprites line"}
       %li{:class => "supporters"}
-        = link_to(pluralize(choice.votes_count, 'supporter'), choice_voters_path(choice), :remote => true)
+        = link_to(pluralize(choice.votes_count, 'supporter'), choice_voters_path(choice), :class => 'fancyboxy')
     %ul{:class => "twitter-profiles"}
       =render :partial => "votes/voter_icon", :collection => choice.votes.order("created_at desc").limit(7), :as => :vote
 

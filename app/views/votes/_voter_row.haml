@@ -1,4 +1,4 @@
 %li
-  = link_to image_tag(voter_profile_image(vote.voter), :'data-twitter-username' => "@#{vote.voter.screen_name}"), tweet_url(vote.voter.screen_name, vote.tweet.twitter_id)
+  = link_to image_tag(voter_profile_image(vote.voter), :'data-twitter-username' => "@#{vote.voter.screen_name}", :size => '48x48'), tweet_url(vote.voter.screen_name, vote.tweet.twitter_id)
   = vote.voter.name
   = link_to "@#{vote.voter.screen_name}", voter_profile_url(vote.voter)
