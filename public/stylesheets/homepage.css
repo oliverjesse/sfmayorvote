@@ -134,6 +134,7 @@ img.small {
 
 .candidate-name a:link, .brief-candidate-name a:link {
   border-bottom: 1px dotted gray;
+  text-decoration: none;
 }
 
 .candidate-name a:link:hover, .brief-candidate-name a:link:hover {
