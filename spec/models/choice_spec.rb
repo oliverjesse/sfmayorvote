@@ -40,6 +40,14 @@ describe Choice do
       @tweet.choices.should =~ @choices
     end
 
+    describe "when multiple choices are contained therein" do
+      it "should select both choices" do
+        tweet = Tweet.new(:text => "I'd like to #make #contact with @foo or @bar")
+        tweet.choices.size.should == 2
+        tweet.choices.should =~ @chain.choices
+      end
+    end
+
     describe "when choices are ambiguous" do
       before(:each) do
         @mar = @chain.choices.create!(:term => "@eric415 EricMar Mar")
