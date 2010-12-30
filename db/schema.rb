@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101230045043) do
+ActiveRecord::Schema.define(:version => 20101230071123) do
 
   create_table "chains", :force => true do |t|
     t.string   "anchor"
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(:version => 20101230045043) do
   end
 
   create_table "voters", :force => true do |t|
-    t.string   "screen_name"
+    t.string   "screen_name",       :null => false
     t.string   "name"
-    t.string   "twitter_id"
+    t.string   "twitter_id",        :null => false
     t.string   "profile_image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
