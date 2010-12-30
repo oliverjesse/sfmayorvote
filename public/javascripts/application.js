@@ -43,7 +43,6 @@ var buttonHandler = function(e){
     candidate = $(e.target).parent().data('tag')
   }
 
-  var tweet_box = $("#tbox iframe").contents().find("textarea");
   var current_index = current_selection.indexOf(candidate);
   if (current_index == -1) {
     markSelected(candidate);
@@ -53,6 +52,7 @@ var buttonHandler = function(e){
     current_selection.delete(current_index);
   }
 
+  var tweet_box = $("#tbox iframe").contents().find("textarea");
   tweet_box.focus(); // so the character count updates, and to draw the user's attention
   // replace the contents with a vote
   var message;
@@ -63,7 +63,15 @@ var buttonHandler = function(e){
   } else {
     message = current_selection[0];
   }
-  tweet_box.val("I'd #vote " + message + " #sfmayor. How about you? http://sfmayorvote.com @sfbos");
+  message = "I'd #vote " + message + " #sfmayor.";
+  if (message.length <= 95) {
+    message += " How about you? http://sfmayorvote.com @sfbos";
+  } else if (message.length <= 110) {
+    message += " http://sfmayorvote.com @sfbos";
+  } else if (message.length <= 117) {
+    message += " http://sfmayorvote.com";
+  }
+  tweet_box.val(message);
 
   if (current_selection.length == 1 && !approvalPromptShown) {
     showPrompt("Yep, select as many as you approve of, then tweet to vote.");
