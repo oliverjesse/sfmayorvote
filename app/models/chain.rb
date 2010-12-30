@@ -23,14 +23,6 @@ class Chain < ActiveRecord::Base
   end
 
   class << self
-    # must have all words from term but in any order
-    def for_tweet(tweet)
-      Chain.find_each do |c|
-        return c if c.term.split.all? {|word| tweet.text =~ /#{word}/i }
-      end
-      nil
-    end
-
     def terms
       @@terms ||= all.map(&:anchor).flatten
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101229230854) do
+ActiveRecord::Schema.define(:version => 20101230004146) do
 
   create_table "chains", :force => true do |t|
     t.string   "anchor"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(:version => 20101229230854) do
     t.integer  "votes_count",     :default => 0
   end
 
+  create_table "tweet_choices", :force => true do |t|
+    t.integer  "tweet_id",   :null => false
+    t.integer  "choice_id",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tweet_choices", ["choice_id"], :name => "index_tweet_choices_on_choice_id"
+  add_index "tweet_choices", ["tweet_id", "choice_id"], :name => "index_tweet_choices_on_tweet_id_and_choice_id", :unique => true
+  add_index "tweet_choices", ["tweet_id"], :name => "index_tweet_choices_on_tweet_id"
+
   create_table "tweets", :force => true do |t|
     t.string   "twitter_id"
     t.string   "text"
@@ -40,7 +51,6 @@ ActiveRecord::Schema.define(:version => 20101229230854) do
     t.datetime "updated_at"
     t.integer  "chain_id"
     t.integer  "voter_id"
-    t.integer  "choice_id"
     t.boolean  "scored",     :default => false
   end
 

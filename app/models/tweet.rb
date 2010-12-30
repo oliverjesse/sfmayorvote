@@ -1,11 +1,12 @@
 class Tweet < ActiveRecord::Base
   belongs_to :voter, :inverse_of => :tweets
   belongs_to :chain, :inverse_of => :tweets
-  belongs_to :choice, :inverse_of => :tweets
 
-  has_one :vote, :inverse_of => :tweet
+  has_many :tweet_choices
+  has_many :choices, :through => :tweet_choices
+  has_many :votes, :inverse_of => :tweet
 
-  after_initialize :set_defaults
+  after_initialize :refresh_associations
   after_create :score
 
   validates :text, :presence => true
@@ -14,15 +15,17 @@ class Tweet < ActiveRecord::Base
 
   # possible race condition in which a vote does not get counted?
   def score
-    if valid? && chain && choice
+    if valid? && chain && choices.present?
       prior_tweet = related_tweets.joins(:vote).first
       return if prior_tweet && prior_tweet.created_at > created_at
-      prior_tweet.vote.destroy if prior_tweet
-      create_vote(
-        :voter_id => voter_id,
-        :choice_id => choice_id,
-        :chain_id => chain_id
-      )
+      prior_tweet.votes.destroy_all if prior_tweet
+      choices.each do |choice|
+        create_vote(
+          :voter_id => voter_id,
+          :choice_id => choice.id,
+          :chain_id => chain_id
+        )
+      end
       chain.update_percentages
       self[:scored] = true
     end
@@ -50,15 +53,24 @@ class Tweet < ActiveRecord::Base
   end
 
   def refresh_associations
-    self.chain = Chain.for_tweet(self)
-    self.choice = Choice.for_tweet(self)
+    self.chain = related_chain
+    self.choices = related_choices
   end
 
   protected
 
-  def set_defaults
-    self.chain ||= Chain.for_tweet(self)
-    self.choice ||= Choice.for_tweet(self)
+  def related_chain
+    # must have all words from term but in any order
+    Chain.all.detect do |c|
+      c.term.split.all? {|word| text =~ /#{word}/i }
+    end
+  end
+
+  def related_choices
+    # must have ANY words from term in any order
+    chain.choices.select do |c|
+      c.term.split.any? {|word| text =~ /\b#{word}\b/i }
+    end
   end
 
   def related_tweets
