@@ -16,9 +16,8 @@ class CreateTweetChoices < ActiveRecord::Migration
     add_index :tweet_choices, :choice_id
     add_index :tweet_choices, [:tweet_id, :choice_id], :unique => true
 
-    p TweetChoice.all
     Tweet.where('choice_id is not null').find_each do |tweet|
-      p tweet
+      next unless tweet.choice
       tweet.choices << tweet.choice
     end
     remove_column :tweets, :choice_id
