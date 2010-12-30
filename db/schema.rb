@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101230071123) do
+ActiveRecord::Schema.define(:version => 20101230192148) do
 
   create_table "chains", :force => true do |t|
     t.string   "anchor"
@@ -23,14 +23,13 @@ ActiveRecord::Schema.define(:version => 20101230071123) do
   create_table "choices", :force => true do |t|
     t.string   "term"
     t.integer  "rank"
-    t.float    "percent",         :default => 0.0
-    t.integer  "markov_chain_id"
+    t.float    "percent",     :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "chain_id"
+    t.integer  "chain_id",                     :null => false
     t.string   "link"
     t.string   "label"
-    t.integer  "votes_count",     :default => 0
+    t.integer  "votes_count", :default => 0
   end
 
   create_table "tweet_choices", :force => true do |t|
@@ -45,12 +44,12 @@ ActiveRecord::Schema.define(:version => 20101230071123) do
   add_index "tweet_choices", ["tweet_id"], :name => "index_tweet_choices_on_tweet_id"
 
   create_table "tweets", :force => true do |t|
-    t.string   "twitter_id"
+    t.string   "twitter_id",                    :null => false
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "chain_id"
-    t.integer  "voter_id"
+    t.integer  "voter_id",                      :null => false
     t.boolean  "scored",     :default => false
     t.datetime "tweeted_at"
   end
