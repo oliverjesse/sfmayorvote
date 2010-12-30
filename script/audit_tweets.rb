@@ -17,12 +17,11 @@ while results['error'].blank? do
       voter[:twitter_id] = user['id']
       voter[:name] = user['name']
       voter.save!
-      tweet = voter.tweets.build(
+      voter.tweets.create!(
         'twitter_id' => tweet['id'],
         'text' => tweet['text'],
         'tweeted_at' => tweet['created_at']
       )
-      tweet.save!
 
       created_count += 1
       print "*"
