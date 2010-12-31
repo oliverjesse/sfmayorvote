@@ -65,6 +65,10 @@ body {
   text-align: center;
 }
 
+.choice_row {
+	width: 938px !important;
+}
+
 ul.twitter-profiles, ul.voter-list {
   list-style-type: none;
   padding: 0px;
