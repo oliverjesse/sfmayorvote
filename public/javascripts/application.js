@@ -94,6 +94,7 @@ $(document).ready(function(){
   $(".vote-button").live("click", buttonHandler);
   if(!isiPhone()){
     $("#tbox").stickyScroll({ mode: 'manual' });
+    $("#zbox").stickyScroll({ mode: 'manual' });
   }
 
   $('a.fancyboxy').fancybox();

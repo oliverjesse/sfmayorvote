@@ -298,6 +298,18 @@ fieldset.search {
 	z-index: 500;
 }
 
+#zbox {
+	margin-bottom: 20px;
+	z-index: 250;
+	background-image: -webkit-gradient(
+	  linear, left top, left bottom, from(rgba(50,50,50,0.8)),
+	  to(rgba(80,80,80,0.2)), color-stop(.5,#333333)
+	);
+	width: 940px;
+	height: 20px;
+	margin-top: 70px;
+}
+
 
 .search button.btn {
 	background-position: -1px -150px;
