@@ -69,6 +69,8 @@
 						bottom: ''
 					});
 					settings.container.addClass('sticky-processed');
+					$("body").css("background-attachment", 'fixed');
+					$("body").css("background-position-y", -topOffset);
 				}
 				else if(top < topOffset) {
 					$this.css({
@@ -78,6 +80,8 @@
 						bottom: ''
 					});
 					settings.container.removeClass('sticky-processed');
+					$("body").css('background-attachment', 'scroll');
+					$("body").css("background-position-y", 0);
 				}
 			};
 
