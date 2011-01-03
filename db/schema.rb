@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110103084710) do
+ActiveRecord::Schema.define(:version => 20110103191504) do
 
   create_table "chains", :force => true do |t|
     t.string   "anchor"
