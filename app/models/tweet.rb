@@ -44,7 +44,7 @@ class Tweet < ActiveRecord::Base
 
   def related_chain
     # must have all words from term but in any order
-    Chain.all.detect do |c|
+    Chain.active.detect do |c|
       c.term.split.all? {|word| text =~ /#{word}/i }
     end
   end

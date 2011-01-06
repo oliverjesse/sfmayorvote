@@ -2,6 +2,8 @@ class Chain < ActiveRecord::Base
   has_many :choices, :dependent => :destroy, :inverse_of => :chain
   has_many :tweets, :inverse_of => :chain
   has_many :votes, :inverse_of => :chain
+  
+  scope :active, where(:active => true)
 
   before_save :update_choices
 
@@ -24,7 +26,7 @@ class Chain < ActiveRecord::Base
 
   class << self
     def terms
-      @@terms ||= all.map(&:anchor).flatten
+      @@terms ||= active.map(&:anchor).flatten
     end
 
     def vote(termpair, s)
