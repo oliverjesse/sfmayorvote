@@ -427,3 +427,73 @@ p.clearfix {
 	font-size: 24px;
 	letter-spacing: -0.03em;
 }
+
+
+/* SUPPORTER LIST POP-UP */
+
+#supporter-list {
+	width:500px;
+	max-height:460px; 
+	-moz-border-radius:20px 20px 20px 20px; 
+	-webkit-border-radius:20px 20px 20px 20px; 
+	border: 10px solid #333333; 
+	position: absolute; 
+	left: 200px; 
+	top: 200px; 
+	background-color: #fff; 
+	margin: 0px; 
+	padding: 0px;
+}
+
+#supporter-list #window-header {
+	padding: 12px 0px 0px 20px;
+	height: 88px;
+	background-color:#c70000;
+	-moz-border-radius:10px 10px 0px 0px;
+	-webkit-border-radius:10px 10px 0px 0px;
+	-moz-box-shadow: 0px -5px 5px -5px #666 inset;
+	-webkit-box-shadow: 0px -5px 5px -5px #666 inset;
+  box-shadow: 0px -5px 5px -5px #666 inset;
+	color:#fff;
+}
+
+#supporter-list #window-header > p {
+	font-family: "museo-slab-1","museo-slab-2";
+	letter-spacing: -0.03em;
+	margin: 0px;
+}
+
+#supporter-list #window-header #supporters {
+	font-size:36px;
+}
+
+#supporter-list #window-header #politician {
+	font-size:18px;
+}
+#supporter-list #window-list { 
+	overflow:auto;
+	padding: 20px 20px 10px 20px;
+	max-height: 320px;
+}
+
+#supporter-list #window-list > div {
+	border-bottom: 1px solid #ccc;
+	width: 100%;
+	height: 60px;
+	margin-bottom: 12px;
+	font-size: 14px;
+}
+
+#supporter-list #window-list > div > img {
+	float:left;
+	margin-right: 10px;
+}
+
+#supporter-list #window-list div .real-name {
+	float:left; 
+} 
+
+#supporter-list #window-list div .location {
+	float:right; 
+	color:#999999;
+}

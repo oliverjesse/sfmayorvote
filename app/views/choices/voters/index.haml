@@ -1,9 +1,11 @@
-%div{:class => "poli-container"}
-  %div{:class => "profile-image"}
-    = link_to_choice(image_tag(choice_image_url(@choice), :size => '206x206'), @choice)
-  %ul
-    %li{:class => "candidate-name"}
-      = link_to_choice(@choice.name, @choice)
+%div{:id => "supporter-list"}
+  %div{:id => "window-header"}
+    %p{:id => "supporters"}
+      = pluralize(@choice.votes_count, 'supporter')
+    %p{:id => "politician"}
+      = "for " + link_to_choice(@choice.name, @choice)
+  %div{:id => "window-list"}
+    %div
+      = render :partial => "votes/voter_row", :collection => @votes, :as => :vote
+      
 
-%ul{:class => 'voter-list'}
-  = render :partial => "votes/voter_row", :collection => @votes, :as => :vote
