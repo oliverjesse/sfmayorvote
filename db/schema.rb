@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110106060153) do
+ActiveRecord::Schema.define(:version => 20110106090637) do
 
   create_table "chains", :force => true do |t|
     t.string   "anchor"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(:version => 20110106060153) do
     t.datetime "updated_at"
     t.integer  "votes_count", :default => 0
     t.boolean  "active",      :default => true
+    t.string   "headline"
+    t.text     "intro"
+    t.text     "outro"
   end
 
   create_table "choices", :force => true do |t|

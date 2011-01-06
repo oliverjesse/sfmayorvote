@@ -54,8 +54,8 @@
     <div class="container_12">
       <div class="grid_12 alpha">
         <div id="logo"><img src="/images/logo.png" width="125" height="125" /></div>
-        <h1>Who should be interim SF Mayor?</h1>
-        <h2>On January 3, 2011, current San Francisco mayor Gavin Newsom becomes California Lieutenant Governor.  The Board of Supervisors gets to choose his replacement.  Tell them how you'd vote.</h2>
+        <h1><%= @chain.headline -%></h1>
+        <h2><%= @chain.intro.html_safe -%></h2>
         <h2>Tweet using #sfmayor #vote and the name of your candidate.  We’ll tabulate all results here.</h2>
       </div>
     </div>
@@ -119,7 +119,7 @@
   <div class="container_12">
     <div class="grid_12 alpha">
       <div id="otherchoice">
-        <h2>Don't see your pick?  Tweet their name with #sfmayor #vote anyway.<br>We'll check for new contenders daily and add them here.</h2>
+        <h2><%= @chain.outro -%></h2>
       </div>
     </div>
   </div>
