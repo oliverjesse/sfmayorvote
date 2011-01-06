@@ -188,6 +188,10 @@ img.small {
 	vertical-align:middle;
 }
 
+.grid_4 .vote-button-container .global-sprites {
+	background:url("../images/sprites_wider_button.png") no-repeat scroll 0 0 transparent;	
+}
+
 .vote-button {
 	background-position: -1px -1px;
 	height: 45px;
@@ -198,6 +202,15 @@ img.small {
 	background-position: -208px -1px;
 	height: 45px;
 	width: 206px;
+}
+
+.grid_4 .vote-button {
+	width: 274px;
+}
+
+.grid_4 .vote-button:hover {
+	width: 274px;
+	background-position: -276px -1px;
 }
 
 .vote-button-container a:link, .vote-button-container a:hover, .vote-button-container a:visited {color: #fff; text-decoration:none;}
@@ -224,6 +237,12 @@ img.small {
 	background-position: -415px -1px;
 	height: 45px;
 	width: 206px;
+}
+
+.grid_4 .vote-button.vote-confirmed {
+	background-position: -551px -1px;
+	height: 45px;
+	width: 274px;
 }
 
 
