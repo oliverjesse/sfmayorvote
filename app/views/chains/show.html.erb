@@ -1,8 +1,11 @@
-<% large_choice_count = 12 %>
+<% large_choice_count = ( @choices.size > 12 ? 12 : @choices.size ) %>
+<% small_choice_count = @choices.size - large_choice_count %>
 
 <div class="container_12">
   <%= render :partial => "choices/show", :collection => @choices.first(large_choice_count), :as => :choice -%>
 </div>
+
+<% if small_choice_count > 0 -%>
 
 <div class="container_12">
 	<div class="grid_12 alpha choice_row" style="height:50px; font-size:12px;line-height:48px; background-color:#e5e7e8; color: #666666; -moz-border-radius: 8px 8px 0px 0px; -webkit-border-radius: 8px 8px 0px 0px; border: 1px #cdd0d2 solid; font-weight: 700; background: -webkit-gradient(linear, left top, left bottom, from(#ecedee), to(#e8eaeb)); background: -moz-linear-gradient(top,  #ecedee,  #e8eaeb);">
@@ -13,3 +16,5 @@
 </div>	
 
 <%= render :partial => "choices/show_brief", :collection => @choices.last(@choices.size - large_choice_count), :as => :choice -%>
+
+<% end -%>
