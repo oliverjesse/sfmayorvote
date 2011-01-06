@@ -2,7 +2,11 @@
 <% small_choice_count = @choices.size - large_choice_count %>
 
 <div class="container_12">
-  <%= render :partial => "choices/show", :collection => @choices.first(large_choice_count), :as => :choice -%>
+  <% if large_choice_count == 3 -%>
+    <%= render :partial => "choices/show_3up", :collection => @choices, :as => :choice -%>    
+  <% else %>
+    <%= render :partial => "choices/show", :collection => @choices.first(large_choice_count), :as => :choice -%>
+  <% end %>
 </div>
 
 <% if small_choice_count > 0 -%>

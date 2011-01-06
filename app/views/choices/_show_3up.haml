@@ -1,0 +1,22 @@
+%div{:class => "grid_4 #{cycle('alpha', '', '', '')}"}
+  %div{:class => "poli-container"}
+    %div{:class => "eyebrow-container"}
+      %span{:class => "global-sprites eyebrow #{((choice_counter == 0) ? '' : 'gray')}"}
+        = rank(choice_counter)
+    %div{:class => "profile-image"}
+      = link_to_choice(image_tag(choice_image_url(choice), :size => '274x274'), choice)
+    %ul
+      %li{:class => "candidate-name"}
+        = link_to_choice(choice.name, choice)
+      %li{:class => "percentage"}
+        = pretty_percent(choice.percent)
+      %li{:class => "global-sprites line"}
+      %li{:class => "supporters"}
+        = link_to(pluralize(choice.votes_count, 'supporter'), choice_voters_path(choice), :class => 'fancyboxy')
+    %ul{:class => "twitter-profiles"}
+      =render :partial => "votes/voter_icon", :collection => choice.votes.order("created_at desc").limit(7), :as => :vote
+
+    %div{:class => "vote-button-container"}
+      %a{:href => "#"}
+        %span{:class => "global-sprites vote-button", :data => { :tag => choice.handle }}
+          = "vote for #{ choice.handle }"
