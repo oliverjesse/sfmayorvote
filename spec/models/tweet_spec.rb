@@ -23,16 +23,20 @@ describe Tweet do
     
     @valid_attributes = {
       :text => "omg we all gotta #vote #awesome for #nosepiercings !!!",
-      :voter => @voter
+      :voter => @voter,
+      :twitter_id => 666
     }
     
     @alternate_attributes = {
       :text => "omg #nosepiercings are soooooo #ugly #vote",
-      :voter => @voter
+      :voter => @voter,
+      :twitter_id => 555
     }
     
-    @invalid_attributes = {
-      :text => "who would want to #vote for #nosepiercings on twitter anyway???" # has chain but no choice
+    @nonvote_attributes = {
+      :text => "who would want to #vote for #nosepiercings on twitter anyway???", # has chain but no choice
+      :voter => @voter,
+      :twitter_id => 555 # also has no twitter_id
     }
   end
   
@@ -160,7 +164,7 @@ describe Tweet do
     
     describe "for invalid tweet" do
       it "should not happen" do
-        @tweet = Tweet.create!(@invalid_attributes)
+        @tweet = Tweet.create!(@nonvote_attributes)
         @tweet.scored.should be_false
       end
     end
