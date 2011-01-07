@@ -3,7 +3,8 @@
     %p{:id => "supporters"}
       = pluralize(@choice.votes_count, 'supporter')
     %p{:id => "politician"}
-      = "for " + link_to_choice(@choice.name, @choice)
+      = "for "
+      = link_to_choice(@choice.name, @choice)
   %div{:id => "window-list"}
     %div
       = render :partial => "votes/voter_row", :collection => @votes, :as => :vote
