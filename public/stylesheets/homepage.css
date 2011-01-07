@@ -24,6 +24,18 @@ h2 {
 	letter-spacing: -0.03em;
 }
 
+h2 a {
+	font-family: "museo-slab-1","museo-slab-2";
+	text-align:center; 
+	font-size: 18px;
+	color: #1e969d;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	font-weight:700;
+	letter-spacing: -0.03em;
+	text-decoration: underline;
+}
+
 body {
 	margin: 0;
 	padding: 0;
