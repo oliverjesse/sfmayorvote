@@ -12,9 +12,13 @@ while results['error'].blank? do
       print "."
     else
       user = Twitter.user(tweet['from_user'])
-      voter = Voter.find_or_initialize_by_screen_name(user['screen_name'])
+      if user['error'].present?
+        puts "#{user['error']} #{tweet['from_user']}" 
+        next
+      end
+      voter = Voter.find_or_initialize_by_twitter_id(user['id'])
       voter[:profile_image_url] = user['profile_image_url']
-      voter[:twitter_id] = user['id']
+      voter[:screen_name] = user['screen_name']
       voter[:name] = user['name']
       voter.save!
       voter.tweets.create!(
