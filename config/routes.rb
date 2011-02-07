@@ -64,5 +64,5 @@ Markov::Application.routes.draw do
 
   match 'vote' => 'votes#create'
   match 'voters/:id' => 'chains/voters#show', :chain_id => 1
-  root :to => "chains#show", :id => 2
+  root :to => "chains#show", :id => 1
 end
